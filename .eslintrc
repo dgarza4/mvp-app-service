@@ -1,0 +1,36 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"prettier",
+		"prettier/@typescript-eslint"
+	],
+	"plugins": [
+		"@typescript-eslint"
+	],
+	"rules": {
+		"curly": "error",
+		// "no-console": ["error", { "allow": ["warn", "error"] }],
+		"object-literal-sort-keys": 0,
+		"max-line-length": 0,
+		"semi": [
+			"error",
+			"always"
+		],
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/no-empty-interface": 2,
+		// "@typescript-eslint/no-unused-vars": 2,
+		"@typescript-eslint/interface-name-prefix": 0,
+		"@typescript-eslint/no-parameter-properties": 0,
+		"@typescript-eslint/no-explicit-any": 0,
+		"@typescript-eslint/ban-ts-ignore": "off",
+		"no-unused-vars": [1, {
+			"argsIgnorePattern": "^_"
+		}],
+		"@typescript-eslint/no-unused-vars": [1, {
+			"argsIgnorePattern": "^_"
+		}]
+	}
+}

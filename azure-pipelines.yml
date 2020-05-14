@@ -1,0 +1,32 @@
+name: "$(Build.SourceBranchName).$(Build.BuildId)$(Rev:.r)"
+
+trigger:
+  - master
+
+variables:
+  imageTag: $(Build.BuildNumber)
+  imageName: platform-api-standalone-sample-service
+  dockerFile: Dockerfile
+  repositoryName: endvr-p-ecr01
+
+pool:
+  vmImage: "ubuntu-latest"
+
+steps:
+  - task: Bash@3
+    displayName: Build image
+    inputs:
+      targetType: inline
+      script: |
+        docker build -f $(dockerFile) . -t $(imageName):$(imageTag)
+
+  - task: ECRPushImage@1
+    inputs:
+      awsCredentials: "CDP AWS Subscription"
+      regionName: "us-east-2"
+      imageSource: "imagename"
+      sourceImageName: $(imageName)
+      sourceImageTag: $(Build.BuildNumber)
+      repositoryName: $(imageName)
+      pushTag: $(Build.BuildNumber)
+      autoCreateRepository: true

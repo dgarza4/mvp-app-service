@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "target": "esnext",
+    "lib": ["esnext"],
+    "noImplicitAny": true,
+    "sourceMap": false,
+    "outDir": "./dist",
+    "noUnusedLocals": false,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "src/**/**.test.ts"]
+}

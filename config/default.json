@@ -1,0 +1,101 @@
+{
+  "name": "platform-api-standalone-service-example",
+  "instance": "1",
+  "user_id": null,
+  "group_id": null,
+
+  // SERVICES
+  "core": {
+    "services": {
+      "folder": ""
+    },
+    "rest-manager": {
+      "port": 3080,
+      "address": "",
+      "cors": "*",
+      "shutdownTimeoutSeconds": 5,
+      "timeout": 600000,
+      "maxBodySize": 200,
+      "maxParameters": 100000,
+      "apiRoute": "/api"
+    },
+    "auth-manager": {
+      "defaultClient": "frontend",
+      "impersonator": {
+        "username": "",
+        "password": ""
+      },
+      "keycloakClients": {
+        "backend": {
+          "realm": "endeavor-keycloak",
+          "auth-server-url": "http://localhost:30080/auth/",
+          "ssl-required": "external",
+          "resource": "endeavor-keycloak-speakers-backend",
+          "verify-token-audience": true,
+          "credentials": {
+            "secret": "secret"
+          },
+          "use-resource-role-mappings": true,
+          "confidential-port": 0,
+          "policy-enforcer": {}
+        },
+        "frontend": {
+          "realm": "endeavor-keycloak",
+          "auth-server-url": "http://localhost:30080/auth/",
+          "ssl-required": "external",
+          "resource": "endeavor-keycloak-speakers-frontend",
+          "public-client": true,
+          "verify-token-audience": true,
+          "use-resource-role-mappings": true,
+          "confidential-port": 0
+        }
+      }
+    },
+    "repl": {
+      "enabled": true,
+      "name": "endeavor-platform-api-${replId}",
+      "path": "/tmp/endeavor-platform-api-${replId}.sock"
+    },
+    "logger": {
+      "enabled": true,
+      "level": "debug",
+      "defaultLevel": "info",
+      "handlers": [{
+          "type": "console",
+          "id": "console",
+          "enabled": true,
+          "level": "debug",
+          "timestamp": true,
+          "colorize": true,
+          "formatter": "txt"
+        },
+        {
+          "type": "file",
+          "id": "file-info",
+          "enabled": true,
+          "file": "./tmp/logs/messages-${env}.log",
+          "level": "debug",
+          "timestamp": true,
+          "formatter": "json"
+        },
+        {
+          "type": "file",
+          "id": "file-error",
+          "enabled": true,
+          "file": "./tmp/logs/errors-${env}.log",
+          "level": "error",
+          "timestamp": true,
+          "formatter": "json"
+        }
+      ]
+    }
+  },
+
+  // SERVICES
+
+  "services": {
+    "talent": {
+      "enabled": false
+    }
+  }
+}

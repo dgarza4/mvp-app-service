@@ -1,0 +1,51 @@
+{
+  "name": "platform-api-standalone-service-example",
+  "version": "1.0.0",
+  "description": "Endeavor standalone platform-api service example",
+  "main": "index.js",
+  "private": true,
+  "author": "Alessandro Iob <alessandro.iob@toptal.com>",
+  "dependencies": {
+    "class-validator": "^0.12.2",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "http-status-codes": "^1.4.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "platform-api": "git+https://endvr-d-cdp@dev.azure.com/endvr-d-cdp/Endeavor%20Experiences/_git/platform-api",
+    "typeorm": "^0.2.24"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/http-errors": "^1.6.3",
+    "@types/lodash": "^4.14.150",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^13.13.4",
+    "@types/supertest": "^2.0.8",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "dotenv-cli": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^4.2.5",
+    "jest": "^25.5.2",
+    "nodemon": "^2.0.3",
+    "prettier": "^2.0.5",
+    "supertest": "^4.0.2",
+    "ts-jest": "^25.4.0",
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "start-dev": "nodemon",
+    "format": "prettier --write \"src/**/*.{js,ts}\"",
+    "lint": "eslint --ext .js,.ts src/",
+    "lint-fix": "eslint --fix --ext .js,.ts src/",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "jest --testTimeout=10000",
+    "test-watch": "jest --watch",
+    "test-coverage": "jest --coverage",
+    "view-coverage": "open coverage/index.html"
+  }
+}

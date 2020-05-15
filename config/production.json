@@ -7,10 +7,6 @@
       "cors": "*"
     },
     "auth-manager": {
-      "impersonator": {
-        "username": "super",
-        "password": "super"
-      },
       "keycloakClients": {
         "backend": {
           "realm": "endeavor-keycloak",

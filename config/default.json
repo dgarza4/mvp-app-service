@@ -9,6 +9,10 @@
     "services": {
       "folder": ""
     },
+    "swagger": {
+      "enabled": true,
+      "apiRoute": "/api-docs"
+    },
     "rest-manager": {
       "port": 3080,
       "address": "",

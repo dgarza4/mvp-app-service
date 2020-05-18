@@ -9,7 +9,7 @@ COPY tsconfig.json ./
 COPY yarn.lock ./
 COPY ./src ./src
 COPY ./config ./config
-RUN yarn --silent && yarn build
+RUN yarn && yarn build
 
 # PRODUCTION STAGE
 

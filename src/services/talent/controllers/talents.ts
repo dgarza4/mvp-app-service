@@ -4,6 +4,7 @@ import { Talent } from "../entities/talent";
 import { ControllerCRUD } from "platform-api";
 import { Controller, Get, Post, Put, Delete, Auth } from "platform-api";
 import { applyOnFields } from "platform-api";
+import { TalentContext } from "../context/talent";
 
 /**
  * @swagger
@@ -71,6 +72,8 @@ class TalentsController extends ControllerCRUD {
   public entityClass = Talent;
   public entityScopes = { view: [], write: [] };
   public hasEntityAuthResource = true;
+
+  protected contextClass: any = TalentContext;
 
   public async start(): Promise<void> {
     super.start();
@@ -338,22 +341,12 @@ class TalentsController extends ControllerCRUD {
   ): Promise<any> {
     const entityId = req.params.id;
     const agentUserId = req.body.agent_id;
-    const entity = await this.getEntity(entityId);
 
-    if (!_.includes(entity.agents, agentUserId)) {
-      for (const scope of _.keys(this.entityScopes)) {
-        await this.registry.api.auth.keycloak.updateUserInResourceScope(
-          this.entityName,
-          entityId,
-          agentUserId,
-          scope
-        );
-      }
-
-      entity.agents = _.concat(entity.agents, [agentUserId]);
-
-      return this.saveEntity(entity);
-    }
+    return this.context.addAgent(
+      entityId,
+      agentUserId,
+      await this.authOptions()
+    );
   }
 
   /**
@@ -391,23 +384,12 @@ class TalentsController extends ControllerCRUD {
   ): Promise<any> {
     const entityId = req.params.id;
     const agentUserId = req.body.agent_id;
-    const entity = await this.getEntity(entityId);
 
-    if (_.includes(entity.agents, agentUserId)) {
-      for (const scope of _.keys(this.entityScopes)) {
-        await this.registry.api.auth.keycloak.updateUserInResourceScope(
-          this.entityName,
-          entityId,
-          agentUserId,
-          scope,
-          false
-        );
-      }
-
-      entity.agents = _.without(entity.agents, agentUserId);
-
-      return this.saveEntity(entity);
-    }
+    return this.context.removeAgent(
+      entityId,
+      agentUserId,
+      await this.authOptions()
+    );
   }
 
   // UTILITIES

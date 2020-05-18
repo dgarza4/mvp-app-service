@@ -72,7 +72,7 @@
         {
           "type": "file",
           "id": "file-info",
-          "enabled": true,
+          "enabled": false,
           "file": "./tmp/logs/messages-${env}.log",
           "level": "debug",
           "timestamp": true,
@@ -81,7 +81,7 @@
         {
           "type": "file",
           "id": "file-error",
-          "enabled": true,
+          "enabled": false,
           "file": "./tmp/logs/errors-${env}.log",
           "level": "error",
           "timestamp": true,

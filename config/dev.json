@@ -34,9 +34,10 @@
         "client": "mysql",
         "host": "localhost",
         "port": 33306,
-        "user": "talent",
-        "password": "talent",
-        "database": "talent",
+        "user": "speakers",
+        "password": "speakers",
+        "database": "speakers",
+        "schema": "speakers-talent",
         "logging": false,
         "synchronize": false
       }

@@ -1,6 +1,7 @@
 # BUILD STAGE
 
 FROM node:12-alpine as builder
+RUN apk add --no-cache git
 
 WORKDIR /app/
 
@@ -14,6 +15,8 @@ RUN yarn && yarn build
 # PRODUCTION STAGE
 
 FROM node:12-alpine
+
+RUN apk add --no-cache git
 
 WORKDIR /app
 ENV NODE_ENV=production

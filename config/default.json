@@ -9,10 +9,12 @@
     "services": {
       "folder": ""
     },
+
     "swagger": {
       "enabled": true,
       "apiRoute": "/api-docs"
     },
+
     "rest-manager": {
       "port": 3080,
       "address": "",
@@ -23,6 +25,36 @@
       "maxParameters": 100000,
       "apiRoute": "/api"
     },
+
+    "notifications-manager": {
+      "adapters": {
+        "email": {
+          "enabled": false,
+          "transport": "smtp",
+          "transportConfig": {
+            "host": "",
+            "port": 0,
+            "auth": {
+              "user": "",
+              "pass": ""
+            }
+          }
+        },
+        "slack": {
+          "enabled": false,
+          "webhookURL": "",
+          "defaultChannel": "",
+          "icon": "",
+          "username": ""
+        }
+      },
+      "paths": {
+        "templates": "./notifications/default/templates",
+        "messages": "./notifications/default/messages",
+        "targets": "./notifications/default/targets"
+      }
+    },
+
     "auth-manager": {
       "defaultClient": "frontend",
       "keycloakClients": {
@@ -51,11 +83,13 @@
         }
       }
     },
+
     "repl": {
       "enabled": true,
       "name": "endeavor-platform-api-${replId}",
       "path": "/tmp/endeavor-platform-api-${replId}.sock"
     },
+
     "logger": {
       "enabled": true,
       "level": "debug",

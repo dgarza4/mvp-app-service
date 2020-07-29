@@ -1,24 +1,72 @@
 name: "$(Build.SourceBranchName).$(Build.BuildId)$(Rev:.r)"
 
 trigger:
-  - master
+  batch: true
+  branches:
+    include:
+      - main
+      - develop
 
 variables:
   imageTag: $(Build.BuildNumber)
-  imageName: platform-api-standalone-sample-service
-  dockerFile: Dockerfile
+  imageName: endevr-platform-api-standalone-service-example
+  dockerFile: ./Dockerfile
   repositoryName: endvr-p-ecr01
 
-pool:
-  vmImage: "ubuntu-latest"
+pool: "Kubernetes-Dev-Cluster"
 
 steps:
+  - task: Npm@1
+    inputs:
+      command: "install"
+
   - task: Bash@3
+    displayName: Run dependency check
+    inputs:
+      targetType: "inline"
+      script: |
+        /usr/tools/dependency-check/bin/dependency-check.sh --project "$(imageName)" --scan "." -f JSON --disableAssembly --suppression dependency-check-suppressions.xml
+      failOnStderr: false
+
+  - task: SonarQubePrepare@4
+    inputs:
+      SonarQube: "k8s-dev-sonarkube"
+      scannerMode: "CLI"
+      configMode: "file"
+
+  - task: SonarQubeAnalyze@4
+
+  - task: Bash@3
+    displayName: Run license checker
+    inputs:
+      targetType: "inline"
+      script: |
+        license-checker --production --csv --out lic.csv
+        pandoc lic.csv -f csv -t gfm -s -o /azp/agent/_work/_temp/licensecheck.md
+        echo "##vso[task.addattachment type=Distributedtask.Core.Summary;name=License Checker;]/azp/agent/_work/_temp/licensecheck.md"
+      failOnStderr: false
+
+  - task: Docker@2
     displayName: Build image
     inputs:
-      targetType: inline
+      command: build
+      DockerFile: $(dockerFile)
+      tags: $(imageTag)
+      repository: $(imageName)
+      buildContext: $(Build.Repository.LocalPath)
+      arguments: --network host
+
+  - task: SonarQubePublish@4
+    inputs:
+      pollingTimeoutSec: "300"
+
+  - task: Bash@3
+    displayName: Scan image for vulnerabilities
+    inputs:
+      targetType: "inline"
       script: |
-        docker build -f $(dockerFile) . -t $(imageName):$(imageTag)
+        clair-scanner -c http://clair:6060 --ip $LAYER_HOST_IP $(imageName):$(imageTag)
+      failOnStderr: false
 
   - task: ECRPushImage@1
     inputs:

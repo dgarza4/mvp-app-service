@@ -30,6 +30,7 @@ ENV NODE_ENV=production
 
 COPY package.json ./
 COPY yarn.lock ./
+COPY .npmrc ./
 RUN yarn --production=true
 
 ## We just need the build to execute the command

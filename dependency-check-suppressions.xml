@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <suppress>
+        <notes><![CDATA[
+         I do not see it as a real security issue as it is explicitly enabled only for email layout development and anyways the inputs are all controlled by us and come straight out of the DB. 
+        ]]></notes>      
+        <packageUrl regex="true">^.*npm\/acorn@4.0.13$</packageUrl>
+        <cwe>400</cwe>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+         I do not see it as a real security issue as it is explicitly enabled only for email layout development and anyways the inputs are all controlled by us and come straight out of the DB. 
+        ]]></notes>      
+        <packageUrl regex="true">^.*npm\/acorn@3.3.0$</packageUrl>
+        <cwe>400</cwe>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[
+         Ignore lodash vulnerability since no access is available to running containers
+        ]]></notes>      
+        <packageUrl regex="true">^.*npm\/lodash@.*$</packageUrl>
+        <vulnerabilityName>1523</vulnerabilityName>
+    </suppress>
+</suppressions>

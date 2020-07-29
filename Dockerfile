@@ -7,6 +7,7 @@ WORKDIR /app/
 COPY package.json ./
 COPY tsconfig.json ./
 COPY yarn.lock ./
+COPY .npmrc ./
 COPY ./src ./src
 COPY ./config ./config
 RUN yarn && yarn build

@@ -1,68 +1,154 @@
+// EXAMPLE DEFAULT CONFIGURATION
+
 {
-  "name": "platform-api-standalone-service-example",
+  // Service name: set it to your service unique name
+  "name": "platform-api",
+  // Service instance: useful when the same service is executed multiple times and we want to specifically distinguish and/or address it
   "instance": "1",
+  // Optional Posix user id used to run the service
   "user_id": null,
+  // Optional Posix group id used to run the service
   "group_id": null,
 
-  // SERVICES
+  // SDK
+
+  // A set of utility modules used to perform REST calls to other services.
+  // Any combination of the available ones can be configured here.
+  "sdk": {
+    // Auth Service
+    "auth": {
+      "url": "http://localhost:3080/api/auth/v1/auth/"
+    },
+    // Notifications Service
+    "notifications": {
+      "url": "http://localhost:3080/api/notifications/v1/notifications/"
+    },
+    // Speakers Talent
+    "speakers-talent": {
+      "url": "http://localhost:3080/api/speakers-talent/v1/talents/"
+    }
+  },
+
+  // CORE
+
+  // Configurations for the core subsystems
   "core": {
-    "services": {
-      "folder": ""
-    },
-
-    "swagger": {
-      "enabled": true,
-      "apiRoute": "/api-docs"
-    },
-
-    "rest-manager": {
-      "port": 3080,
-      "address": "",
-      "cors": "*",
-      "shutdownTimeoutSeconds": 5,
-      "timeout": 600000,
-      "maxBodySize": 200,
-      "maxParameters": 100000,
-      "apiRoute": "/api"
-    },
-
-    "notifications-manager": {
-      "adapters": {
-        "email": {
-          "enabled": false,
-          "transport": "smtp",
-          "transportConfig": {
-            "host": "",
-            "port": 0,
-            "auth": {
-              "user": "",
-              "pass": ""
-            }
-          }
-        },
-        "slack": {
-          "enabled": false,
-          "webhookURL": "",
-          "defaultChannel": "",
-          "icon": "",
-          "username": ""
-        }
-      },
-      "paths": {
-        "templates": "./notifications/default/templates",
-        "messages": "./notifications/default/messages",
-        "targets": "./notifications/default/targets"
+    // External REST API requests retry and backoff functionality
+    "request": {
+      "retry": 5,
+      // Expressed in milliseconds
+      "retryBackoff": 500,
+      // Used to calculate next retry backoff
+      "retryFactor": 3,
+      // Errors and status code we should perform a retry for
+      "retryErrors": {
+        "code": ["ECONNREFUSED"],
+        "status": [502]
       }
     },
 
+    // ServicesManager
+    "services": {
+      // Specify where the `services` module folders is.
+      // The ServiceManager is automatically loading enabled services from this folder
+      "folder": ""
+    },
+
+    // EventsManager
+    // TODO: Will be documented when ready for production
+    "events-manager": {
+      "enabled": false,
+      "prefix": "EPA",
+      "namespace": "",
+      "versionCheckDisabled": false,
+      "requestMaxChunkSize": 0,
+      "strategy": "cpu-usage",
+      "callBackoff": {
+        "retry": 3,
+        "retryBackoff": 100,
+        "retryFactor": 2
+      },
+      "connection": {
+        "disableReconnect": false,
+        "reconnectTimeoutSeconds": 5,
+        "adapter": "amqp",
+        "amqp": {
+          "urls": []
+        }
+      },
+      "discovery": {
+        "heartbeatIntervalSeconds": 10,
+        "heartbeatTimeoutSeconds": 30,
+        "offlineNodesCheckIntervalSeconds": 60,
+        "disableHeartbeatChecks": false,
+        "disableOfflineNodeRemoving": false,
+        "cleanOfflineNodesTimeoutSeconds": 600,
+        "adapter": "db",
+        "db": {
+          "client": "mysql",
+          "host": "localhost",
+          "port": 3306,
+          "user": "",
+          "password": "",
+          "database": "",
+          "schema": "speakers-platform",
+          "logging": false,
+          "synchronize": false
+        }
+      }
+    },
+
+    // SwaggerManager
+    "swagger": {
+      // Is the Swagger UI enabled?
+      "enabled": true,
+      // Where should it be exposed?
+      "apiRoute": "/api-docs"
+    },
+
+    // RestManager: exposes REST endpoints created by Controllers
+    "rest-manager": {
+      "enabled": true,
+      // The RestManager will be started if enabled AND if the role in the NodeJS cluster matches the flag below
+      // Accepted values:
+      // - "master": the service process is the master (for `cluster` kind) or the main thread (`thread` kind)
+      // - "worker": the service process is a forked worker (for `cluster` kind) or not the main thread (`thread` kind)
+      // - null, "all": always start
+      // - "disabled": never starts
+      "clusterRole": "master",
+      // HTTP listening port
+      "port": 3080,
+      // HTTP listening address, empty equals "0.0.0.0" equals all interfaces
+      "address": "",
+      // CORS configuration
+      "cors": "*",
+      // Seconds to wait before forcefully close open connections at shutdown
+      "shutdownTimeoutSeconds": 5,
+      // Connection timeout in milliseconds
+      "timeout": 600000,
+      // Maximum request body size in megabytes
+      "maxBodySize": 200,
+      // Maximum number og query parameters
+      "maxParameters": 100000,
+      // API URL root
+      "apiRoute": "/api",
+      // Folder where uploaded files are stored
+      "uploadFolder": "/tmp"
+    },
+
+    // AuthManager: abstracts Keycloak access and management
     "auth-manager": {
+      // Session secret
+      "session-secret": "not-so-secret!",
+      // Default Keycloak client
       "defaultClient": "frontend",
+      // Keycloak Clients, by name
       "keycloakClients": {
         "backend": {
-          "realm": "endeavor-keycloak",
+          "realm": "endeavor-speakers",
           "auth-server-url": "http://localhost:30080/auth/",
           "ssl-required": "external",
-          "resource": "endeavor-keycloak-speakers-backend",
+          "resource": "endeavor-speakers-backend",
           "verify-token-audience": true,
           "credentials": {
             "secret": "secret"
@@ -72,10 +158,10 @@
           "policy-enforcer": {}
         },
         "frontend": {
-          "realm": "endeavor-keycloak",
+          "realm": "endeavor-speakers",
           "auth-server-url": "http://localhost:30080/auth/",
           "ssl-required": "external",
-          "resource": "endeavor-keycloak-speakers-frontend",
+          "resource": "endeavor-speakers-frontend",
           "public-client": true,
           "verify-token-audience": true,
           "use-resource-role-mappings": true,
@@ -84,32 +170,125 @@
       }
     },
 
-    "repl": {
-      "enabled": true,
-      "name": "endeavor-platform-api-${replId}",
-      "path": "/tmp/endeavor-platform-api-${replId}.sock"
+    // NotificationsManager: abstracts basic in-service notification functionalities
+    "notifications-manager": {
+      // set it to true to force using the Notifications Service instead of sending notifications directly
+      "useSDK": false,
+      // Available notification adapters
+      "adapters": {
+        // Email adapter
+        "email": {
+          "enabled": false,
+          // Supported transports: "smtp", "sendgrid"
+          "transport": "smtp",
+          // Transport specific configuration
+          "transportConfig": {
+            "host": "",
+            "port": 0,
+            "auth": {
+              "user": "",
+              "pass": ""
+            }
+          }
+        },
+        // Slack adapter
+        "slack": {
+          "enabled": false,
+          "webhookURL": "",
+          // Use this channel if no channel is specified
+          "defaultChannel": "",
+          // "User" icon used in the messages
+          "icon": "",
+          //User name displayed in the messages
+          "username": ""
+        }
+      },
+      //Notifications data paths
+      "paths": {
+        // The root folder where to search for the data
+        "root": "./notifications",
+        // Folder containing the templates
+        "templates": "${root}/default/templates",
+        // Folder containing the message types
+        "messages": "${root}/default/messages",
+        // Folder containing the targets
+        "targets": "${root}/default/targets"
+      }
     },
 
+    // SearchManager: abstracts data indexing and search functionalities
+    "search-manager": {
+      // Supported adapters: "appsearch", "elasticsearch"
+      "adapter": "appsearch",
+      "adapters": {
+        "elasticsearch": {
+          // see https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/client-configuration.html
+          "client": {
+            "node": "http://localhost:9200",
+            "auth": {
+              "username": "",
+              "password": ""
+            },
+            "ssl": {
+              "rejectUnauthorized": false
+            }
+          }
+        },
+        "appsearch": {
+          // see https://swiftype.com/documentation/app-search/api/credentials
+          "client": {
+            "node": "http://localhost:3002/api/as/v1/",
+            "auth": {
+              "apiKey": ""
+            }
+          }
+        }
+      }
+    },
+
+    // ReplManager: provides a command line shell to access service functionalities at run-time.
+    "repl": {
+      "enabled": true,
+      // REPL name/prompt
+      "name": "endeavor-${name}-${instance}-${env}-${replId}",
+      // REPL socket path: will be used and logged at boot time. Must be unique otherwise will error if already present.
+      "path": "/tmp/endeavor-${name}-${instance}-${env}-${replId}.sock"
+    },
+
+    // LogsManager
     "logger": {
       "enabled": true,
+      // Log entries with level >= this one, otherwise ignore
       "level": "debug",
+      // Default log level, if not specified
       "defaultLevel": "info",
-      "handlers": [{
+      // Available and enabled log handlers
+      "handlers": [
+        {
+          // Log to the console
           "type": "console",
+          // Logger internal ID
           "id": "console",
           "enabled": true,
+          // Log entries with level >= this one, otherwise ignore. If not provided uses the top-level one.
           "level": "debug",
+          // Should we add a timestamp to the log entry?
           "timestamp": true,
+          // Should we try to colorize the log entry?
           "colorize": true,
+          // Valid formatters: "txt", "json", "ecs"
           "formatter": "txt"
         },
         {
+          // Log to a file
           "type": "file",
           "id": "file-info",
           "enabled": false,
+          // The file path. Available template variables are: "env", "instance", "level", "pid"
           "file": "./tmp/logs/messages-${env}.log",
           "level": "debug",
           "timestamp": true,
+          // Valid formatters: "txt", "json"
           "formatter": "json"
         },
         {
@@ -119,6 +298,7 @@
           "file": "./tmp/logs/errors-${env}.log",
           "level": "error",
           "timestamp": true,
+          // Valid formatters: "txt", "json"
           "formatter": "json"
         }
       ]
@@ -127,9 +307,57 @@
 
   // SERVICES
 
+  // Services specific configurations. the key is the service name.
   "services": {
-    "talent": {
+    "speakers-talent": {
+      "enabled": false,
+      "hwa": {
+        "mediaProxyUrl": "/proxy/hwa/",
+        "hiddenStates": ["deceased", "myhw only", "hide"]
+      },
+      "search": {
+        "enabled": true,
+        //"index": "speakers_talent"
+        "index": "endeavor-speakers-talent"
+      },
+      "talentsCacheEnabled": false,
+      "queryCache": {
+        "enabled": false,
+        // can be true/false or number of milliseconds
+        "default": 10000,
+        "queries": {
+          // 1 minute
+          "find_talent_entities": 60000,
+          // 10 minutes
+          "list_talent_types": 600000,
+          // 10 minutes
+          "list_talent_topics": 600000
+        }
+      }
+    },
+
+    "speakers-booking": {
       "enabled": false
+    },
+
+    "fitness": {
+      "enabled": false
+    },
+
+    "auth": {
+      "enabled": false,
+      "features": {
+        "authEndpoints": {
+          "tokens/grant": false,
+          "tokens/impersonate": true
+        }
+      },
+      "keycloak": {
+        "bootstrap": {
+          "enabled": false,
+          "configPath": ""
+        }
+      }
     }
   }
 }

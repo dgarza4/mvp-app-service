@@ -28,15 +28,15 @@
 
   // SERVICES
   "services": {
-    "talent": {
+    "quote": {
       "enabled": true,
       "database": {
         "client": "mysql",
         "host": "localhost",
         "port": 33306,
-        "user": "talent",
-        "password": "talent",
-        "database": "talent",
+        "user": "mvpapp",
+        "password": "mvpapp",
+        "database": "mvpapp",
         "logging": false,
         "synchronize": false
       }

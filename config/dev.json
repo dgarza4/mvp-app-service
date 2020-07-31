@@ -10,7 +10,7 @@
       "keycloakClients": {
         "backend": {
           "realm": "endeavor-keycloak",
-          "auth-server-url": "http://localhost:30080/auth/",
+          "auth-server-url": "https://keycloak.cluster1.endvr-digital-dev.com/auth",
           "resource": "endeavor-keycloak-speakers-backend",
           "credentials": {
             "secret": "secret"
@@ -18,7 +18,7 @@
         },
         "frontend": {
           "realm": "endeavor-keycloak",
-          "auth-server-url": "http://localhost:30080/auth/",
+          "auth-server-url": "https://keycloak.cluster1.endvr-digital-dev.com/auth",
           "resource": "endeavor-keycloak-speakers-frontend",
           "public-client": true
         }
@@ -28,16 +28,16 @@
 
   // SERVICES
   "services": {
-    "talent": {
+    "quote": {
       "enabled": true,
       "database": {
         "client": "mysql",
         "host": "localhost",
         "port": 33306,
-        "user": "speakers",
-        "password": "speakers",
-        "database": "speakers",
-        "schema": "speakers-talent",
+        "user": "mvpapp",
+        "password": "mvpapp",
+        "database": "mvpapp",
+        "schema": "mvpapp-quotes",
         "logging": false,
         "synchronize": false
       }

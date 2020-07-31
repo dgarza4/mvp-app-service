@@ -1,6 +1,6 @@
 import { Service } from "platform-api";
 
-export = class TalentService extends Service {
+export = class QuoteService extends Service {
   public init(): void {
     this.logger.info(`server.service.${this.name}.init: starting...`);
 

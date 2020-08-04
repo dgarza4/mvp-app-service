@@ -1,6 +1,6 @@
 import _ from "lodash";
 import express from "express";
-import { Quote } from "../entities/quote";
+import { Todo } from "../entities/todo";
 import { ControllerCRUD, Auth } from "platform-api";
 import { Controller, Get, Post, Put, Delete } from "platform-api";
 
@@ -9,17 +9,20 @@ import { Controller, Get, Post, Put, Delete } from "platform-api";
  *
  * components:
  *   schemas:
- *     QuoteNew:
+ *     TodoNew:
  *       type: object
  *       required:
- *         - value
+ *         - title
+ *         - done
  *       properties:
- *         value:
+ *         title:
  *           type: string
+ *         done:
+ *           type: boolean
  *
- *     Quote:
+ *     Todo:
  *       allOf:
- *         - $ref: '#/components/schemas/QuoteNew'
+ *         - $ref: '#/components/schemas/TodoNew'
  *         - type: object
  *           required:
  *             - id
@@ -30,10 +33,10 @@ import { Controller, Get, Post, Put, Delete } from "platform-api";
  *
  */
 
-@Controller("/v1/quotes")
-class QuotesController extends ControllerCRUD {
-  public entityName = "quote";
-  public entityClass = Quote;
+@Controller("/v1/todos")
+class TodosController extends ControllerCRUD {
+  public entityName = "todo";
+  public entityClass = Todo;
   public entityScopes = { view: [], write: [] };
   public hasEntityAuthResource = true;
 
@@ -44,11 +47,11 @@ class QuotesController extends ControllerCRUD {
   /**
    * @swagger
    *
-   * /v1/quotes/:
+   * /v1/todos/:
    *   get:
-   *     summary: Get a list of quotes
+   *     summary: Get a list of todos
    *     tags:
-   *       - Quote
+   *       - Todo
    *     parameters:
    *       - $ref: '#/components/parameters/offsetParam'
    *       - $ref: '#/components/parameters/pageParam'
@@ -65,10 +68,10 @@ class QuotesController extends ControllerCRUD {
    *             schema:
    *               type: array
    *               items:
-   *                 $ref: '#/components/schemas/Quote'
+   *                 $ref: '#/components/schemas/Todo'
    */
   @Get("/")
-  @Auth({ permissions: ["quote:${id}?view"] })
+  // @Auth({ permissions: ["todo:${id}?view"] })
   protected async find(
     req: express.Request,
     res: express.Response
@@ -79,13 +82,13 @@ class QuotesController extends ControllerCRUD {
   /**
    * @swagger
    *
-   * /v1/quotes/{id}:
+   * /v1/todos/{id}:
    *   get:
-   *     summary: Get a quote entry
+   *     summary: Get a todo entry
    *     security:
    *       - BearerAuth: []
    *     tags:
-   *       - Quote
+   *       - Todo
    *     parameters:
    *       - $ref: '#/components/parameters/idParam'
    *     responses:
@@ -94,10 +97,10 @@ class QuotesController extends ControllerCRUD {
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/Quote'
+   *               $ref: '#/components/schemas/Todo'
    */
   @Get("/:id")
-  @Auth({ permissions: ["quote:${id}?view"] })
+  // @Auth({ permissions: ["todo:${id}?view"] })
   protected async get(
     req: express.Request,
     res: express.Response
@@ -108,31 +111,32 @@ class QuotesController extends ControllerCRUD {
   /**
    * @swagger
    *
-   * /v1/quotes/:
+   * /v1/todos/:
    *   post:
-   *     summary: Create a new quote entry
+   *     summary: Create a new todo entry
    *     security:
    *       - BearerAuth: []
    *     tags:
-   *       - Quote
+   *       - Todo
    *     requestBody:
    *       required: true
    *       content:
    *         application/json:
    *           schema:
-   *             $ref: '#/components/schemas/QuoteNew'
+   *             $ref: '#/components/schemas/TodoNew'
    *           example:
-   *             value: The pizza delivery boy tips Chuck Norris.
+   *             title: Do something!
+   *             done: false
    *     responses:
    *       '200':
    *         description: OK
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/Quote'
+   *               $ref: '#/components/schemas/Todo'
    */
   @Post("/")
-  @Auth({ permissions: ["quote:${id}?write"] })
+  // @Auth({ permissions: ["todo:${id}?write"] })
   protected async post(
     req: express.Request,
     res: express.Response
@@ -143,13 +147,13 @@ class QuotesController extends ControllerCRUD {
   /**
    * @swagger
    *
-   * /v1/quotes/{id}:
+   * /v1/todos/{id}:
    *   put:
-   *     summary: Update a quote entry
+   *     summary: Update a todo entry
    *     security:
    *       - BearerAuth: []
    *     tags:
-   *       - Quote
+   *       - Todo
    *     parameters:
    *       - $ref: '#/components/parameters/idParam'
    *     requestBody:
@@ -157,19 +161,20 @@ class QuotesController extends ControllerCRUD {
    *       content:
    *         application/json:
    *           schema:
-   *             $ref: '#/components/schemas/QuoteNew'
+   *             $ref: '#/components/schemas/TodoNew'
    *           example:
-   *             value: The pizza delivery boy tips Chuck Norris.
+   *             title: Do something!
+   *             done: false
    *     responses:
    *       '200':
    *         description: OK
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/Quote'
+   *               $ref: '#/components/schemas/Todo'
    */
   @Put("/:id")
-  @Auth({ permissions: ["quote:${id}?write"] })
+  // @Auth({ permissions: ["todo:${id}?write"] })
   protected async put(
     req: express.Request,
     res: express.Response
@@ -180,13 +185,13 @@ class QuotesController extends ControllerCRUD {
   /**
    * @swagger
    *
-   * /v1/quotes/{id}:
+   * /v1/todos/{id}:
    *   delete:
-   *     summary: Delete a quote entry
+   *     summary: Delete a todo entry
    *     security:
    *       - BearerAuth: []
    *     tags:
-   *       - Quote
+   *       - Todo
    *     parameters:
    *       - $ref: '#/components/parameters/idParam'
    *     responses:
@@ -195,10 +200,10 @@ class QuotesController extends ControllerCRUD {
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/Quote'
+   *               $ref: '#/components/schemas/Todo'
    */
   @Delete("/:id")
-  @Auth({ permissions: ["quote:${id}?write"] })
+  // @Auth({ permissions: ["todo:${id}?write"] })
   protected async delete(
     req: express.Request,
     res: express.Response
@@ -207,4 +212,4 @@ class QuotesController extends ControllerCRUD {
   }
 }
 
-export = QuotesController;
+export = TodosController;

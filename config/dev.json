@@ -28,7 +28,7 @@
 
   // SERVICES
   "services": {
-    "quote": {
+    "todo": {
       "enabled": true,
       "database": {
         "client": "mysql",
@@ -37,7 +37,7 @@
         "user": "mvpapp",
         "password": "mvpapp",
         "database": "mvpapp",
-        "schema": "mvpapp-quotes",
+        "schema": "mvpapp-todos",
         "logging": false,
         "synchronize": false
       }

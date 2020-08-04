@@ -28,7 +28,7 @@
 
   // SERVICES
   "services": {
-    "quote": {
+    "todo": {
       "enabled": true,
       "database": {
         "client": "mysql",

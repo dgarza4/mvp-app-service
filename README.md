@@ -1,11 +1,11 @@
 # MVP app service
 
-The MVP app service is a Platform API Standalone Service. It has a single CRUD-like controller for quotes (it extends the ControllerCRUD class).
+The MVP app service is a Platform API Standalone Service. It has a single CRUD-like controller for todos (it extends the ControllerCRUD class).
 
 ## Notes:
 
 The only major things required to get this going was:
-- rename the original service and controllers (from talent to quote)
+- rename the original service and controllers (from talent to todo)
 - clean up the controller to make it a basic CRUD controller
 - update the config/default.json file to disable some base services
 - update the config/dev.json file to update the DB config values

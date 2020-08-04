@@ -2,7 +2,7 @@
   // CORE
   "core": {
     "rest-manager": {
-      "port": 13080,
+      "port": 3080,
       "address": "",
       "cors": "*"
     },
@@ -20,7 +20,7 @@
         "frontend": {
           "realm": "mvpapp",
           // "auth-server-url": "https://keycloak.cluster1.endvr-digital-dev.com/auth",
-          "auth-server-url": "https://localhost:30080/auth",
+          "auth-server-url": "http://localhost:30080/auth",
           "resource": "mvp-app-frontend",
           "public-client": true
         }

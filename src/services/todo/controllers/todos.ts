@@ -1,3 +1,4 @@
+import _ from "lodash";
 import express from "express";
 import { Todo } from "../entities/todo";
 import { ControllerCRUD, Auth } from "platform-api";
@@ -70,12 +71,30 @@ class TodosController extends ControllerCRUD {
    *                 $ref: '#/components/schemas/Todo'
    */
   @Get("/")
-  @Auth({ permissions: ["todo:${id}?view"] })
+  @Auth()
   protected async find(
     req: express.Request,
     res: express.Response
   ): Promise<any> {
     return super.find(req, res);
+  }
+
+  protected async preProcessSearchOptions(
+    req: express.Request,
+    searchOptions: any
+  ): Promise<any> {
+    const userId = this.registry.api.auth.keycloak.getUserIdFromReq(req);
+    const whereOptions = [];
+
+    whereOptions.push([`${this.entityName}.user_id = :userId`, { userId }]);
+
+    if (_.isEmpty(searchOptions.andWhere)) {
+      searchOptions.andWhere = whereOptions;
+    } else {
+      searchOptions.andWhere = _.concat(whereOptions, searchOptions.andWhere);
+    }
+
+    return searchOptions;
   }
 
   /**
@@ -135,12 +154,26 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Post("/")
-  @Auth({ permissions: ["todo:${id}?write"] })
+  @Auth()
   protected async post(
     req: express.Request,
     res: express.Response
   ): Promise<any> {
+    const userId = this.registry.api.auth.keycloak.getUserIdFromReq(req);
+
     return super.post(req, res);
+  }
+
+  protected async preProcessPostPayload(
+    req: express.Request,
+    payload: any
+  ): Promise<any> {
+    const userId = this.registry.api.auth.keycloak.getUserIdFromReq(req);
+
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    payload.user_id = userId;
+
+    return payload;
   }
 
   /**

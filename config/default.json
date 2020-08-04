@@ -141,10 +141,10 @@
       // Keycloak Clients, by name
       "keycloakClients": {
         "backend": {
-          "realm": "endeavor-speakers",
+          "realm": "mvpapp",
           "auth-server-url": "http://localhost:30080/auth/",
           "ssl-required": "external",
-          "resource": "endeavor-speakers-backend",
+          "resource": "mvp-app-backend",
           "verify-token-audience": true,
           "credentials": {
             "secret": "secret"
@@ -154,10 +154,10 @@
           "policy-enforcer": {}
         },
         "frontend": {
-          "realm": "endeavor-speakers",
+          "realm": "mvpapp",
           "auth-server-url": "http://localhost:30080/auth/",
           "ssl-required": "external",
-          "resource": "endeavor-speakers-frontend",
+          "resource": "mvp-app-frontend",
           "public-client": true,
           "verify-token-audience": true,
           "use-resource-role-mappings": true,
@@ -259,7 +259,8 @@
       // Default log level, if not specified
       "defaultLevel": "info",
       // Available and enabled log handlers
-      "handlers": [{
+      "handlers": [
+        {
           // Log to the console
           "type": "console",
           // Logger internal ID

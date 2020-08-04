@@ -1,0 +1,88 @@
+# BUILD STAGE
+
+FROM node:12-alpine as builder
+
+WORKDIR /app/
+
+ENV NODE_ENV=dev
+
+COPY package.json ./
+COPY tsconfig.json ./
+COPY yarn.lock ./
+COPY nodemon.json ./
+COPY .npmrc ./
+COPY ./src ./src
+COPY ./config ./config
+RUN yarn
+
+#Labels as per https://github.com/opencontainers/image-spec/blob/master/annotations.md
+
+LABEL org.opencontainers.image.url="https://dev.azure.com/endvr-d-cdp/Endeavor%20Experiences/_git/endeavor-auth-api?path=%2FREADME.md"
+LABEL org.opencontainers.image.source="https://dev.azure.com/endvr-d-cdp/Endeavor%20Experiences/_git/endeavor-auth-api"
+LABEL org.opencontainers.image.vendor="Endeavor"
+LABEL org.opencontainers.image.title="Endeavor Experiences Auth API"
+
+# see https://dev.azure.com/endvr-d-cdp/Endeavor%20Experiences/_git/platform-api?path=%2FREADME.md&_a=preview&anchor=keycloak-realm-config-(the-automatic-way)
+
+# The Auth service starts only if enabled (default is 'false') [
+ENV SERVICE_AUTH_ENABLED=true
+# Initialize Keycloak's realm, clients, roles, etc. (default is 'false')
+ENV SERVICE_AUTH_KEYCLOAK_BOOTSTRAP=true
+# Keycloak bootstrap configuration file path (default is '')
+ENV SERVICE_AUTH_KEYCLOAK_BOOTSTRAP_CONFIG_PATH=''
+# Keycloak's URL for bootstrap process (default is 'http://localhost:30080') [
+ENV SERVICE_AUTH_KEYCLOAK_BOOTSTRAP_URL='http://keycloak-service:8080'
+# Keycloak client Id for bootstrap process (default is 'admin-cli')
+ENV SERVICE_AUTH_KEYCLOAK_BOOTSTRAP_CLIENT_ID=''
+# Keycloak admin user name for bootstrap process (default is 'admin')
+ENV SERVICE_AUTH_KEYCLOAK_BOOTSTRAP_USERNAME=''
+# keycloak admin user password for bootstrap process (default is 'admin')
+ENV SERVICE_AUTH_KEYCLOAK_BOOTSTRAP_PASSWORD=''
+
+# Events Service
+ENV EVENTS_MANAGER_ENABLED="false"
+ENV EVENTS_MANAGER_STRATEGY="cpu-usage"
+ENV EVENTS_MANAGER_CONNECTION_ADAPTER="amqp"
+ENV EVENTS_MANAGER_CONNECTION_ADAPTER_AMQP_URLS=""
+# The service events manager discovery adapter
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER="db"
+# The service events manager discovery db adapter client
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER_DB_CLIENT="mysql"
+# The service events manager discovery db adapter database host
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER_DB_HOST=""
+# The service events manager discovery db adapter database port
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER_DB_PORT="3306"
+# The service events manager discovery db adapter database user
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER_DB_USER=""
+# The service events manager discovery db adapter database password
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER_DB_PASSWORD=""
+# The service events manager discovery db adapter database schema
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER_DB_SCHEMA="public"
+# The service events manager discovery db adapter database name
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER_DB_DATABASE=""
+# The service events manager discovery db adapter database logging enabled flag
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER_DB_LOGGING="false"
+# The service events manager discovery db adapter database automatic schema synchronization flag
+ENV EVENTS_MANAGER_DISCOVERY_ADAPTER_DB_SYNCHRONIZE="false"
+
+# backend auth server url
+ENV KEYCLOAK_BACKEND_AUTH_SERVER_URL='http://keycloak-service:8080/auth/'
+ENV KEYCLOAK_BACKEND_CLIENT='endeavor-speakers-backend'
+ENV KEYCLOAK_BACKEND_CREDENTIALS_SECRET='secret'
+
+# frontend auth server url
+ENV KEYCLOAK_FRONTEND_AUTH_SERVER_URL='http://keycloak-service:8080/auth/'
+ENV KEYCLOAK_FRONTEND_CLIENT='endeavor-speakers-frontend'
+
+ENV KEYCLOAK_REALM='endeavor-speakers'
+
+# Password for user-less V1 authentication (default is 'Speakers2020')
+ENV SERVICE_AUTH_PASSWORD_AUTH_PASSWORD="Speakers2020"
+# Keycloak user name for real auth
+ENV SERVICE_AUTH_PASSWORD_AUTH_KEYCLOAK_USERNAME=""
+# Keycloak user password for real auth
+ENV SERVICE_AUTH_PASSWORD_AUTH_KEYCLOAK_PASSWORD=""
+
+EXPOSE 3080/tcp
+
+ENTRYPOINT ["yarn", "start-dev"]

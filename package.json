@@ -34,10 +34,12 @@
     "supertest": "^4.0.2",
     "ts-jest": "^25.4.0",
     "ts-node": "^8.9.1",
+    "ts-node-dev": "^1.0.0-pre.56",
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "start-dev": "nodemon",
+    "start-dev": "TS_NODE_TYPE_CHECK=true NODE_ENV=dev npx ts-node-dev --respawn --transpile-only src/index.ts",
+    "start-dev-k8s": "TS_NODE_TYPE_CHECK=true npx ts-node-dev --poll --respawn --transpile-only src/index.ts",
     "format": "prettier --write \"src/**/*.{js,ts}\"",
     "lint": "eslint --ext .js,.ts src/",
     "lint-fix": "eslint --fix --ext .js,.ts src/",

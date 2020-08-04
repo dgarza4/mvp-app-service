@@ -22,10 +22,6 @@
     // Notifications Service
     "notifications": {
       "url": "http://localhost:3080/api/notifications/v1/notifications/"
-    },
-    // Speakers Talent
-    "speakers-talent": {
-      "url": "http://localhost:3080/api/speakers-talent/v1/talents/"
     }
   },
 
@@ -263,8 +259,7 @@
       // Default log level, if not specified
       "defaultLevel": "info",
       // Available and enabled log handlers
-      "handlers": [
-        {
+      "handlers": [{
           // Log to the console
           "type": "console",
           // Logger internal ID
@@ -309,55 +304,8 @@
 
   // Services specific configurations. the key is the service name.
   "services": {
-    "speakers-talent": {
-      "enabled": false,
-      "hwa": {
-        "mediaProxyUrl": "/proxy/hwa/",
-        "hiddenStates": ["deceased", "myhw only", "hide"]
-      },
-      "search": {
-        "enabled": true,
-        //"index": "speakers_talent"
-        "index": "endeavor-speakers-talent"
-      },
-      "talentsCacheEnabled": false,
-      "queryCache": {
-        "enabled": false,
-        // can be true/false or number of milliseconds
-        "default": 10000,
-        "queries": {
-          // 1 minute
-          "find_talent_entities": 60000,
-          // 10 minutes
-          "list_talent_types": 600000,
-          // 10 minutes
-          "list_talent_topics": 600000
-        }
-      }
-    },
-
-    "speakers-booking": {
-      "enabled": false
-    },
-
-    "fitness": {
-      "enabled": false
-    },
-
-    "auth": {
-      "enabled": false,
-      "features": {
-        "authEndpoints": {
-          "tokens/grant": false,
-          "tokens/impersonate": true
-        }
-      },
-      "keycloak": {
-        "bootstrap": {
-          "enabled": false,
-          "configPath": ""
-        }
-      }
+    "todo": {
+      "enabled": true
     }
   }
 }

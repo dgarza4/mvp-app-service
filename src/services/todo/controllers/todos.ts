@@ -70,7 +70,7 @@ class TodosController extends ControllerCRUD {
    *                 $ref: '#/components/schemas/Todo'
    */
   @Get("/")
-  @Auth({ permissions: ["todo:${id}?view"] })
+  // @Auth({ permissions: ["todo:${id}?view"] })
   protected async find(
     req: express.Request,
     res: express.Response
@@ -99,7 +99,7 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Get("/:id")
-  @Auth({ permissions: ["todo:${id}?view"] })
+  // @Auth({ permissions: ["todo:${id}?view"] })
   protected async get(
     req: express.Request,
     res: express.Response
@@ -135,7 +135,7 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Post("/")
-  @Auth({ permissions: ["todo:${id}?write"] })
+  // @Auth({ permissions: ["todo:${id}?write"] })
   protected async post(
     req: express.Request,
     res: express.Response
@@ -173,7 +173,7 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Put("/:id")
-  @Auth({ permissions: ["todo:${id}?write"] })
+  // @Auth({ permissions: ["todo:${id}?write"] })
   protected async put(
     req: express.Request,
     res: express.Response
@@ -202,7 +202,7 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Delete("/:id")
-  @Auth({ permissions: ["todo:${id}?write"] })
+  // @Auth({ permissions: ["todo:${id}?write"] })
   protected async delete(
     req: express.Request,
     res: express.Response

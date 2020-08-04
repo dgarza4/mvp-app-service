@@ -2,24 +2,26 @@
   // CORE
   "core": {
     "rest-manager": {
-      "port": 3080,
+      "port": 13080,
       "address": "",
       "cors": "*"
     },
     "auth-manager": {
       "keycloakClients": {
         "backend": {
-          "realm": "endeavor-keycloak",
-          "auth-server-url": "https://keycloak.cluster1.endvr-digital-dev.com/auth",
-          "resource": "endeavor-keycloak-speakers-backend",
+          "realm": "mvpapp",
+          // "auth-server-url": "https://keycloak.cluster1.endvr-digital-dev.com/auth",
+          "auth-server-url": "http://localhost:30080/auth",
+          "resource": "mvp-app-backend",
           "credentials": {
             "secret": "secret"
           }
         },
         "frontend": {
-          "realm": "endeavor-keycloak",
-          "auth-server-url": "https://keycloak.cluster1.endvr-digital-dev.com/auth",
-          "resource": "endeavor-keycloak-speakers-frontend",
+          "realm": "mvpapp",
+          // "auth-server-url": "https://keycloak.cluster1.endvr-digital-dev.com/auth",
+          "auth-server-url": "https://localhost:30080/auth",
+          "resource": "mvp-app-frontend",
           "public-client": true
         }
       }
@@ -33,7 +35,7 @@
       "database": {
         "client": "mysql",
         "host": "localhost",
-        "port": 33306,
+        "port": 33308,
         "user": "mvpapp",
         "password": "mvpapp",
         "database": "mvpapp",

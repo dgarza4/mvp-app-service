@@ -9,17 +9,17 @@
     "auth-manager": {
       "keycloakClients": {
         "backend": {
-          "realm": "endeavor-keycloak",
+          "realm": "mvpapp",
           "auth-server-url": "http://localhost:30080/auth/",
-          "resource": "endeavor-keycloak-speakers-backend",
+          "resource": "mvp-app-backend",
           "credentials": {
             "secret": "secret"
           }
         },
         "frontend": {
-          "realm": "endeavor-keycloak",
+          "realm": "mvpapp",
           "auth-server-url": "http://localhost:30080/auth/",
-          "resource": "endeavor-keycloak-speakers-frontend",
+          "resource": "mvp-app-frontend",
           "public-client": true
         }
       }

@@ -51,6 +51,8 @@ class TodosController extends ControllerCRUD {
    * /v1/todos/:
    *   get:
    *     summary: Get a list of todos
+   *     security:
+   *       - BearerAuth: []
    *     tags:
    *       - Todo
    *     parameters:

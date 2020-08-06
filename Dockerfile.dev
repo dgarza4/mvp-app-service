@@ -26,14 +26,14 @@ LABEL org.opencontainers.image.title="Endeavor Experiences MVP app service"
 
 # backend auth server url
 ENV KEYCLOAK_BACKEND_AUTH_SERVER_URL='http://keycloak-service:8080/auth/'
-ENV KEYCLOAK_BACKEND_CLIENT='endeavor-speakers-backend'
+ENV KEYCLOAK_BACKEND_CLIENT='mvp-app-backend'
 ENV KEYCLOAK_BACKEND_CREDENTIALS_SECRET='secret'
 
 # frontend auth server url
 ENV KEYCLOAK_FRONTEND_AUTH_SERVER_URL='http://keycloak-service:8080/auth/'
-ENV KEYCLOAK_FRONTEND_CLIENT='endeavor-speakers-frontend'
+ENV KEYCLOAK_FRONTEND_CLIENT='mvp-app-frontend'
 
-ENV KEYCLOAK_REALM='endeavor-speakers'
+ENV KEYCLOAK_REALM='mvpapp'
 
 ENV SDK_AUTH_URL='http://localhost:3080/api/auth/v1/auth/'
 ENV SDK_NOTIFICATIONS_URL='http://localhost:3080/api/notifications/v1/notifications/'

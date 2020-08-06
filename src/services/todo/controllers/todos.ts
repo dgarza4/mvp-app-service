@@ -74,11 +74,14 @@ class TodosController extends ControllerCRUD {
    *                 $ref: '#/components/schemas/Todo'
    */
   @Get("/")
-  @Auth()
+  // @Auth()
   protected async find(
     req: express.Request,
     res: express.Response
   ): Promise<any> {
+    this.logger.debug(">>> HEADERS: ${headers}", {
+      headers: JSON.stringify(req.headers, null, 2),
+    });
     return super.find(req, res);
   }
 

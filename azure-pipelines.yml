@@ -20,31 +20,31 @@ steps:
     inputs:
       command: "install"
 
-  - task: Bash@3
-    displayName: Run dependency check
-    inputs:
-      targetType: "inline"
-      script: |
-        /usr/tools/dependency-check/bin/dependency-check.sh --project "$(imageName)" --scan "." -f JSON --disableAssembly --suppression dependency-check-suppressions.xml
-      failOnStderr: false
+  # - task: Bash@3
+  #   displayName: Run dependency check
+  #   inputs:
+  #     targetType: "inline"
+  #     script: |
+  #       /usr/tools/dependency-check/bin/dependency-check.sh --project "$(imageName)" --scan "." -f JSON --disableAssembly --suppression dependency-check-suppressions.xml
+  #     failOnStderr: false
 
-  - task: SonarQubePrepare@4
-    inputs:
-      SonarQube: "k8s-dev-sonarkube"
-      scannerMode: "CLI"
-      configMode: "file"
+  # - task: SonarQubePrepare@4
+  #   inputs:
+  #     SonarQube: "k8s-dev-sonarkube"
+  #     scannerMode: "CLI"
+  #     configMode: "file"
 
-  - task: SonarQubeAnalyze@4
+  # - task: SonarQubeAnalyze@4
 
-  - task: Bash@3
-    displayName: Run license checker
-    inputs:
-      targetType: "inline"
-      script: |
-        license-checker --production --csv --out lic.csv
-        pandoc lic.csv -f csv -t gfm -s -o /azp/agent/_work/_temp/licensecheck.md
-        echo "##vso[task.addattachment type=Distributedtask.Core.Summary;name=License Checker;]/azp/agent/_work/_temp/licensecheck.md"
-      failOnStderr: false
+  # - task: Bash@3
+  #   displayName: Run license checker
+  #   inputs:
+  #     targetType: "inline"
+  #     script: |
+  #       license-checker --production --csv --out lic.csv
+  #       pandoc lic.csv -f csv -t gfm -s -o /azp/agent/_work/_temp/licensecheck.md
+  #       echo "##vso[task.addattachment type=Distributedtask.Core.Summary;name=License Checker;]/azp/agent/_work/_temp/licensecheck.md"
+  #     failOnStderr: false
 
   - task: Docker@2
     displayName: Build image
@@ -56,17 +56,17 @@ steps:
       buildContext: $(Build.Repository.LocalPath)
       arguments: --network host
 
-  - task: SonarQubePublish@4
-    inputs:
-      pollingTimeoutSec: "300"
+  # - task: SonarQubePublish@4
+  #   inputs:
+  #     pollingTimeoutSec: "300"
 
-  - task: Bash@3
-    displayName: Scan image for vulnerabilities
-    inputs:
-      targetType: "inline"
-      script: |
-        clair-scanner -c http://clair:6060 --ip $LAYER_HOST_IP $(imageName):$(imageTag)
-      failOnStderr: false
+  # - task: Bash@3
+  #   displayName: Scan image for vulnerabilities
+  #   inputs:
+  #     targetType: "inline"
+  #     script: |
+  #       clair-scanner -c http://clair:6060 --ip $LAYER_HOST_IP $(imageName):$(imageTag)
+  #     failOnStderr: false
 
   - task: ECRPushImage@1
     inputs:

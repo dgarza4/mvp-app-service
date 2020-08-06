@@ -11,7 +11,7 @@ export = class TodoService extends Service {
         [serviceName]: {
           search: {
             enabled: {
-              doc: `The search integration starts only if enabled`,
+              doc: `The ${serviceName} service  starts only if enabled`,
               format: Boolean,
               default: false,
               env: `SERVICE_${serviceNameUpper}_SEARCH_ENABLED`,

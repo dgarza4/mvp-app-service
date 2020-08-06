@@ -54,6 +54,8 @@ ENV KEYCLOAK_FRONTEND_CLIENT='mvp-app-frontend'
 
 ENV KEYCLOAK_REALM='mvpapp'
 
+ENV SDK_AUTH_URL='http://localhost:3080/api/auth/v1/auth/'
+ENV SDK_NOTIFICATIONS_URL='http://localhost:3080/api/notifications/v1/notifications/'
 
 EXPOSE 3080/tcp
 

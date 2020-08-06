@@ -134,6 +134,8 @@
 
     // AuthManager: abstracts Keycloak access and management
     "auth-manager": {
+      // Keycloak realm, overwrites the client ones
+      "realm": "mvpapp",
       // Session secret
       "session-secret": "not-so-secret!",
       // Default Keycloak client
@@ -259,8 +261,7 @@
       // Default log level, if not specified
       "defaultLevel": "info",
       // Available and enabled log handlers
-      "handlers": [
-        {
+      "handlers": [{
           // Log to the console
           "type": "console",
           // Logger internal ID

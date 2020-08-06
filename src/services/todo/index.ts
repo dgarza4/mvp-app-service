@@ -37,6 +37,11 @@ export = class TodoService extends Service {
   public async setup(): Promise<void> {
     this.logger.info(`server.service.${this.name}.setup: starting...`);
 
+    this.logger.debug(
+      ">>> AUTH MANAGER CONFIG: ${JSON.stringify(config, null, 2)}'",
+      { config: this.config.get("core.auth-manager") }
+    );
+
     await super.setup();
 
     this.logger.info(`server.service.${this.name}.setup: finished`);

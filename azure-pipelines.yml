@@ -9,7 +9,7 @@ trigger:
 
 variables:
   imageTag: $(Build.BuildNumber)
-  imageName: endevr-mvp-app-service
+  imageName: endvr-mvp-app-service
   dockerFile: ./Dockerfile
   repositoryName: endvr-p-ecr01
 

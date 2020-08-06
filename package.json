@@ -1,6 +1,6 @@
 {
   "name": "mvp-app-service",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Endeavor MVP-app service",
   "main": "index.js",
   "private": true,

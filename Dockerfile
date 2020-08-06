@@ -44,12 +44,12 @@ USER scooby
 #-------------------------------------------------------
 
 # backend auth server url
-ENV KEYCLOAK_BACKEND_AUTH_SERVER_URL='http://keycloak-service:8080/auth/'
+ENV KEYCLOAK_BACKEND_AUTH_SERVER_URL='https://keycloak.cluster1.endvr-digital-dev.com/auth/'
 ENV KEYCLOAK_BACKEND_CLIENT='mvp-app-backend'
 ENV KEYCLOAK_BACKEND_CREDENTIALS_SECRET='secret'
 
 # frontend auth server url
-ENV KEYCLOAK_FRONTEND_AUTH_SERVER_URL='http://keycloak-service:8080/auth/'
+ENV KEYCLOAK_FRONTEND_AUTH_SERVER_URL='https://keycloak.cluster1.endvr-digital-dev.com/auth/'
 ENV KEYCLOAK_FRONTEND_CLIENT='mvp-app-frontend'
 
 ENV KEYCLOAK_REALM='mvpapp'

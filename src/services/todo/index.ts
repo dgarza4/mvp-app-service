@@ -1,6 +1,28 @@
+import _ from "lodash";
 import { Service } from "platform-api";
 
 export = class TodoService extends Service {
+  static configurationSchema(serviceName: string): any {
+    const serviceNameLower = _.kebabCase(serviceName).toLowerCase();
+    const serviceNameUpper = _.snakeCase(serviceName).toUpperCase();
+
+    return _.merge(Service.configurationSchema(serviceName), {
+      services: {
+        [serviceName]: {
+          search: {
+            enabled: {
+              doc: `The search integration starts only if enabled`,
+              format: Boolean,
+              default: false,
+              env: `SERVICE_${serviceNameUpper}_SEARCH_ENABLED`,
+              arg: `service-${serviceNameLower}-search-enabled`,
+            },
+          },
+        },
+      },
+    });
+  }
+
   public init(): void {
     this.logger.info(`server.service.${this.name}.init: starting...`);
 

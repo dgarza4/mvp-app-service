@@ -2,7 +2,7 @@
 
 {
   // Service name: set it to your service unique name
-  "name": "platform-api",
+  "name": "mvp-app",
   // Service instance: useful when the same service is executed multiple times and we want to specifically distinguish and/or address it
   "instance": "1",
   // Optional Posix user id used to run the service
@@ -169,7 +169,7 @@
     // NotificationsManager: abstracts basic in-service notification functionalities
     "notifications-manager": {
       // set it to true to force using the Notifications Service instead of sending notifications directly
-      "useSDK": false,
+      "useSDK": true,
       // Available notification adapters
       "adapters": {
         // Email adapter

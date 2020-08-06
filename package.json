@@ -1,7 +1,7 @@
 {
-  "name": "platform-api-standalone-service-example",
-  "version": "1.0.0",
-  "description": "Endeavor standalone platform-api service example",
+  "name": "mvp-app-service",
+  "version": "1.0.1",
+  "description": "Endeavor MVP-app service",
   "main": "index.js",
   "private": true,
   "author": "Alessandro Iob <alessandro.iob@toptal.com>",
@@ -12,7 +12,7 @@
     "http-status-codes": "^1.4.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "platform-api": "^1.8.15",
+    "platform-api": "^1.8.16",
     "typeorm": "^0.2.24"
   },
   "devDependencies": {

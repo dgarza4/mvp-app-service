@@ -3,6 +3,7 @@ import express from "express";
 import { Todo } from "../entities/todo";
 import { ControllerCRUD, Auth } from "platform-api";
 import { Controller, Get, Post, Put, Delete } from "platform-api";
+import { NOTIFICATION_TARGET_TYPE } from "platform-api";
 
 /**
  * @swagger
@@ -211,8 +212,74 @@ class TodosController extends ControllerCRUD {
     req: express.Request,
     res: express.Response
   ): Promise<any> {
-    return super.put(req, res);
+    const todo = await super.put(req, res);
+    const userId = this.registry.api.auth.keycloak.getUserIdFromReq(req);
+
+    await this.notifyUser(userId, todo);
+
+    return todo;
   }
+
+  protected async notifyUser(userId: string, todo: any) {
+    const options: any = {
+      fromAddress: "todo@mvpapp.endevr",
+    };
+
+    const targetMessages = [
+      {
+        targetType: NOTIFICATION_TARGET_TYPE.USER_ID,
+        target: userId,
+        messageType: "mvp-app-task-completed",
+        options,
+      },
+      {
+        targetType: NOTIFICATION_TARGET_TYPE.SLACK_CHANNEL,
+        target: "#",
+        messageType: "mvp-app-task-completed",
+        options,
+      },
+    ];
+
+    const user = this.registry.api.notifications.normalizeKeycloakUserInfo(
+      await this.registry.api.auth.userInfoByName(userId)
+    );
+
+    const payload = {
+      user,
+      todo,
+    };
+
+    await this.notifyTargets(targetMessages, payload, {
+      success:
+        "server.service.todo.notifyUser: successfully sent todo notification to '${JSON.stringify(target)}'",
+      error:
+        "server.service.todo.notifyUser: error sending todo notification to '${JSON.stringify(target)}' as ${error}\n${error.stack}",
+    });
+  }
+
+  protected notifyTargets = async (
+    targetMessages: any[],
+    payload: any,
+    logMessages: any = {},
+    useSDK = false
+  ) => {
+    const ps: any = [];
+
+    _.forEach(targetMessages, (targetMessage) => {
+      ps.push(
+        this.registry.api.notifications.notifyTargetType(
+          targetMessage.targetType,
+          targetMessage.target,
+          targetMessage.messageType,
+          payload,
+          targetMessage.options,
+          logMessages
+        )
+      );
+    });
+
+    await Promise.all(ps);
+  };
 
   /**
    * @swagger

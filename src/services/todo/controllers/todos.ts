@@ -227,7 +227,7 @@ class TodosController extends ControllerCRUD {
 
   protected async notifyUser(userId: string, todo: any) {
     const options: any = {
-      fromAddress: "todo@mvpapp.endevr",
+      fromAddress: "mvp-app-bot@nything.cluster1.endvr-digital-dev.com",
     };
 
     const targetMessages = [

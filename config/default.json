@@ -15,10 +15,6 @@
   // A set of utility modules used to perform REST calls to other services.
   // Any combination of the available ones can be configured here.
   "sdk": {
-    // Auth Service
-    "auth": {
-      "url": "http://localhost:3080/api/auth/v1/auth/"
-    },
     // Notifications Service
     "notifications": {
       "url": "http://localhost:3080/api/notifications/v1/notifications/"
@@ -129,43 +125,15 @@
       // API URL root
       "apiRoute": "/api",
       // Folder where uploaded files are stored
-      "uploadFolder": "/tmp"
-    },
-
-    // AuthManager: abstracts Keycloak access and management
-    "auth-manager": {
-      // Keycloak realm, overwrites the client ones
-      "realm": "mvpapp",
-      // Session secret
-      "session-secret": "not-so-secret!",
-      // Default Keycloak client
-      "defaultClient": "frontend",
-      // Keycloak Clients, by name
-      "keycloakClients": {
-        "backend": {
-          "realm": "mvpapp",
-          "auth-server-url": "http://localhost:30080/auth/",
-          "ssl-required": "external",
-          "resource": "mvp-app-backend",
-          "verify-token-audience": true,
-          "credentials": {
-            "secret": "secret"
-          },
-          "use-resource-role-mappings": true,
-          "confidential-port": 0,
-          "policy-enforcer": {}
-        },
-        "frontend": {
-          "realm": "mvpapp",
-          "auth-server-url": "http://localhost:30080/auth/",
-          "ssl-required": "external",
-          "resource": "mvp-app-frontend",
-          "public-client": true,
-          "verify-token-audience": true,
-          "use-resource-role-mappings": true,
-          "confidential-port": 0
-        }
-      }
+      "uploadFolder": "/tmp",
+      // JWT auth settings
+      "jwt": {
+        "secret": "",
+        "algorithms": ["RS256"],
+        "verifyToken": false
+      },
+      // JWT field that contains the unique user ID
+      "jwtUserIdField": "email"
     },
 
     // NotificationsManager: abstracts basic in-service notification functionalities

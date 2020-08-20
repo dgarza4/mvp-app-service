@@ -4,6 +4,7 @@ import { Todo } from "../entities/todo";
 import { ControllerCRUD, Auth } from "platform-api";
 import { Controller, Get, Post, Put, Delete } from "platform-api";
 import { NOTIFICATION_TARGET_TYPE } from "platform-api";
+import { requestUserToUserInfo } from "platform-api";
 
 /**
  * @swagger
@@ -38,8 +39,6 @@ import { NOTIFICATION_TARGET_TYPE } from "platform-api";
 class TodosController extends ControllerCRUD {
   public entityName = "todo";
   public entityClass = Todo;
-  public entityScopes = { view: [], write: [] };
-  public hasEntityAuthResource = true;
 
   public async start(): Promise<void> {
     super.start();
@@ -79,17 +78,14 @@ class TodosController extends ControllerCRUD {
     req: express.Request,
     res: express.Response
   ): Promise<any> {
-    this.logger.debug(">>> HEADERS: ${headers}", {
-      headers: JSON.stringify(req.headers, null, 2),
-    });
     return super.find(req, res);
   }
 
   protected async preProcessSearchOptions(
-    req: express.Request,
+    req: any,
     searchOptions: any
   ): Promise<any> {
-    const userId = this.registry.api.auth.keycloak.getUserIdFromReq(req);
+    const userId = req.user.email;
     const whereOptions = [];
 
     whereOptions.push([`${this.entityName}.user_id = :userId`, { userId }]);
@@ -124,7 +120,7 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Get("/:id")
-  @Auth({ permissions: ["todo:${id}?view"] })
+  @Auth()
   protected async get(
     req: express.Request,
     res: express.Response
@@ -165,16 +161,11 @@ class TodosController extends ControllerCRUD {
     req: express.Request,
     res: express.Response
   ): Promise<any> {
-    const userId = this.registry.api.auth.keycloak.getUserIdFromReq(req);
-
     return super.post(req, res);
   }
 
-  protected async preProcessPostPayload(
-    req: express.Request,
-    payload: any
-  ): Promise<any> {
-    const userId = this.registry.api.auth.keycloak.getUserIdFromReq(req);
+  protected async preProcessPostPayload(req: any, payload: any): Promise<any> {
+    const userId = req.user.email;
 
     // eslint-disable-next-line @typescript-eslint/camelcase
     payload.user_id = userId;
@@ -212,28 +203,27 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Put("/:id")
-  @Auth({ permissions: ["todo:${id}?write"] })
+  @Auth()
   protected async put(
     req: express.Request,
     res: express.Response
   ): Promise<any> {
     const todo = await super.put(req, res);
-    const userId = this.registry.api.auth.keycloak.getUserIdFromReq(req);
 
-    await this.notifyUser(userId, todo);
+    await this.notifyUser(requestUserToUserInfo(req), todo);
 
     return todo;
   }
 
-  protected async notifyUser(userId: string, todo: any) {
+  protected async notifyUser(user: any, todo: any) {
     const options: any = {
       fromAddress: "mvp-app-bot@mvp-app.cluster1.endvr-digital-dev.com",
     };
 
     const targetMessages = [
       {
-        targetType: NOTIFICATION_TARGET_TYPE.USER_ID,
-        target: userId,
+        targetType: NOTIFICATION_TARGET_TYPE.USER,
+        target: user,
         messageType: "mvp-app-task-completed",
         options,
       },
@@ -244,10 +234,6 @@ class TodosController extends ControllerCRUD {
         options,
       },
     ];
-
-    const user = this.registry.api.notifications.normalizeKeycloakUserInfo(
-      await this.registry.api.auth.userInfoByName(userId)
-    );
 
     const payload = {
       user,
@@ -266,7 +252,7 @@ class TodosController extends ControllerCRUD {
     targetMessages: any[],
     payload: any,
     logMessages: any = {},
-    useSDK = false
+    _useSDK = false
   ) => {
     const ps: any = [];
 
@@ -307,7 +293,7 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Delete("/:id")
-  @Auth({ permissions: ["todo:${id}?write"] })
+  @Auth()
   protected async delete(
     req: express.Request,
     res: express.Response

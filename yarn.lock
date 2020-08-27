@@ -541,27 +541,6 @@
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@jsdevtools/ono/-/ono-7.1.3.tgz#9df03bbd7c696a5c58885c34aa06da41c8543796"
   integrity sha1-nfA7vXxpalxYiFw0qgbaQchUN5Y=
 
-"@nodelib/fs.scandir@2.1.3":
-  version "2.1.3"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@nodelib/fs.scandir/-/fs.scandir-2.1.3.tgz#3a582bdb53804c6ba6d146579c46e52130cf4a3b"
-  integrity sha1-Olgr21OATGum0UZXnEblITDPSjs=
-  dependencies:
-    "@nodelib/fs.stat" "2.0.3"
-    run-parallel "^1.1.9"
-
-"@nodelib/fs.stat@2.0.3", "@nodelib/fs.stat@^2.0.2":
-  version "2.0.3"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@nodelib/fs.stat/-/fs.stat-2.0.3.tgz#34dc5f4cabbc720f4e60f75a747e7ecd6c175bd3"
-  integrity sha1-NNxfTKu8cg9OYPdadH5+zWwXW9M=
-
-"@nodelib/fs.walk@^1.2.3":
-  version "1.2.4"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@nodelib/fs.walk/-/fs.walk-1.2.4.tgz#011b9202a70a6366e436ca5c065844528ab04976"
-  integrity sha1-ARuSAqcKY2bkNspcBlhEUoqwSXY=
-  dependencies:
-    "@nodelib/fs.scandir" "2.1.3"
-    fastq "^1.6.0"
-
 "@sendgrid/client@^6.5.5":
   version "6.5.5"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@sendgrid/client/-/client-6.5.5.tgz#66cf569445d98a795998a894bb432a9939ead7c3"
@@ -619,11 +598,6 @@
   integrity sha1-sWZeLEYaLNkvTBu/UNVFTeDUtCE=
   dependencies:
     defer-to-connect "^1.0.1"
-
-"@testim/chrome-version@^1.0.7":
-  version "1.0.7"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@testim/chrome-version/-/chrome-version-1.0.7.tgz#0cd915785ec4190f08a3a6acc9b61fc38fb5f1a9"
-  integrity sha1-DNkVeF7EGQ8Io6asybYfw4+18ak=
 
 "@types/babel-types@*", "@types/babel-types@^7.0.0":
   version "7.0.8"
@@ -683,6 +657,13 @@
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/caseless/-/caseless-0.12.2.tgz#f65d3d6389e01eeb458bd54dc8f52b95a9463bc8"
   integrity sha1-9l09Y4ngHutFi9VNyPUrlalGO8g=
 
+"@types/cls-hooked@*":
+  version "4.3.1"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/cls-hooked/-/cls-hooked-4.3.1.tgz#0fdfd38f827aa77d15120871e9ca5c593840b2e1"
+  integrity sha1-D9/Tj4J6p30VEghx6cpcWThAsuE=
+  dependencies:
+    "@types/node" "*"
+
 "@types/color-name@^1.1.1":
   version "1.1.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -714,7 +695,7 @@
     "@types/qs" "*"
     "@types/range-parser" "*"
 
-"@types/express@^4.17.6":
+"@types/express@*", "@types/express@^4.17.6":
   version "4.17.7"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/express/-/express-4.17.7.tgz#42045be6475636d9801369cd4418ef65cdb0dd59"
   integrity sha1-QgRb5kdWNtmAE2nNRBjvZc2w3Vk=
@@ -723,14 +704,6 @@
     "@types/express-serve-static-core" "*"
     "@types/qs" "*"
     "@types/serve-static" "*"
-
-"@types/glob@^7.1.1":
-  version "7.1.3"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/glob/-/glob-7.1.3.tgz#e6ba80f36b7daad2c685acd9266382e68985c183"
-  integrity sha1-5rqA82t9qtLGhazZJmOC5omFwYM=
-  dependencies:
-    "@types/minimatch" "*"
-    "@types/node" "*"
 
 "@types/graceful-fs@^4.1.2":
   version "4.1.3"
@@ -779,17 +752,19 @@
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/mime/-/mime-2.0.3.tgz#c893b73721db73699943bfc3653b1deb7faa4a3a"
   integrity sha1-yJO3NyHbc2mZQ7/DZTsd63+qSjo=
 
-"@types/minimatch@*":
-  version "3.0.3"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
-  integrity sha1-PcoOPzOyAPx9ETnAzZbBJoyt/Z0=
-
 "@types/moment@^2.13.0":
   version "2.13.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/moment/-/moment-2.13.0.tgz#604ebd189bc3bc34a1548689404e61a2a4aac896"
   integrity sha1-YE69GJvDvDShVIaJQE5hoqSqyJY=
   dependencies:
     moment "*"
+
+"@types/mysql@*":
+  version "2.15.15"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/mysql/-/mysql-2.15.15.tgz#af2223d2841091a5a819eabee6dff19567f1cf1f"
+  integrity sha1-ryIj0oQQkaWoGeq+5t/xlWfxzx8=
+  dependencies:
+    "@types/node" "*"
 
 "@types/node@*", "@types/node@>=8.9.0":
   version "14.0.27"
@@ -810,6 +785,19 @@
   version "4.0.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha1-L4u0QUNNFjs1+4/9zNcTiSf/uMA=
+
+"@types/pg-types@*":
+  version "1.11.5"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/pg-types/-/pg-types-1.11.5.tgz#1eebbe62b6772fcc75c18957a90f933d155e005b"
+  integrity sha1-Huu+YrZ3L8x1wYlXqQ+TPRVeAFs=
+
+"@types/pg@*":
+  version "7.14.4"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/@types/pg/-/pg-7.14.4.tgz#15cfcfd9300f94fd44e6191a1b0ba18d2de209f6"
+  integrity sha1-Fc/P2TAPlP1E5hkaGwuhjS3iCfY=
+  dependencies:
+    "@types/node" "*"
+    "@types/pg-types" "*"
 
 "@types/prettier@^1.19.0":
   version "1.19.1"
@@ -1017,21 +1005,6 @@ adler-32@~1.2.0:
     exit-on-epipe "~1.0.1"
     printj "~1.1.0"
 
-agent-base@6:
-  version "6.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/agent-base/-/agent-base-6.0.1.tgz#808007e4e5867decb0ab6ab2f928fbdb5a596db4"
-  integrity sha1-gIAH5OWGfeywq2qy+Sj721pZbbQ=
-  dependencies:
-    debug "4"
-
-aggregate-error@^3.0.0:
-  version "3.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/aggregate-error/-/aggregate-error-3.0.1.tgz#db2fe7246e536f40d9b5442a39e117d7dd6a24e0"
-  integrity sha1-2y/nJG5Tb0DZtUQqOeEX191qJOA=
-  dependencies:
-    clean-stack "^2.0.0"
-    indent-string "^4.0.0"
-
 ajv@^6.10.0, ajv@^6.10.2, ajv@^6.11.0, ajv@^6.5.5:
   version "6.12.3"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/ajv/-/ajv-6.12.3.tgz#18c5af38a111ddeb4f2697bd78d68abc1cabd706"
@@ -1195,11 +1168,6 @@ array-flatten@1.1.1:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
   integrity sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
 
-array-union@^2.1.0:
-  version "2.1.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/array-union/-/array-union-2.1.0.tgz#b798420adbeb1de828d84acd8a2e23d3efe85e8d"
-  integrity sha1-t5hCCtvrHego2ErNii4j0+/oXo0=
-
 array-unique@^0.3.2:
   version "0.3.2"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
@@ -1209,16 +1177,6 @@ asap@~2.0.3:
   version "2.0.6"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
-
-asn1.js@^5.3.0:
-  version "5.4.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/asn1.js/-/asn1.js-5.4.1.tgz#11a980b84ebb91781ce35b0fdc2ee294e3783f07"
-  integrity sha1-EamAuE67kXgc41sP3C7ilON4Pwc=
-  dependencies:
-    bn.js "^4.0.0"
-    inherits "^2.0.1"
-    minimalistic-assert "^1.0.0"
-    safer-buffer "^2.1.0"
 
 asn1@~0.2.3:
   version "0.2.4"
@@ -1242,10 +1200,22 @@ astral-regex@^1.0.0:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
   integrity sha1-bIw/uCfdQ+45GPJ7gngqt2WKb9k=
 
+async-hook-jl@^1.7.6:
+  version "1.7.6"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/async-hook-jl/-/async-hook-jl-1.7.6.tgz#4fd25c2f864dbaf279c610d73bf97b1b28595e68"
+  integrity sha1-T9JcL4ZNuvJ5xhDXO/l7GyhZXmg=
+  dependencies:
+    stack-chain "^1.3.7"
+
 async@0.9.x:
   version "0.9.2"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/async/-/async-0.9.2.tgz#aea74d5e61c1f899613bf64bda66d4c78f2fd17d"
   integrity sha1-rqdNXmHB+JlhO/ZL2mbUx48v0X0=
+
+async@^1.5.0:
+  version "1.5.2"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
+  integrity sha1-7GphrlZIDAw8skHJVhjiCJL5Zyo=
 
 async@^3.1.0:
   version "3.2.0"
@@ -1267,17 +1237,65 @@ atob@^2.1.2:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
 
+atomic-batcher@^1.0.2:
+  version "1.0.2"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/atomic-batcher/-/atomic-batcher-1.0.2.tgz#d16901d10ccec59516c197b9ccd8930689b813b4"
+  integrity sha1-0WkB0QzOxZUWwZe5zNiTBom4E7Q=
+
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
   integrity sha1-tG6JCTSpWR8tL2+G1+ap8bP+dqg=
+
+aws-xray-sdk-core@3.1.0:
+  version "3.1.0"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/aws-xray-sdk-core/-/aws-xray-sdk-core-3.1.0.tgz#a68c79808a92c2752a9b4ed12a54b6439539546d"
+  integrity sha1-pox5gIqSwnUqm07RKlS2Q5U5VG0=
+  dependencies:
+    "@types/cls-hooked" "*"
+    atomic-batcher "^1.0.2"
+    cls-hooked "^4.2.2"
+    pkginfo "^0.4.0"
+    semver "^5.3.0"
+
+aws-xray-sdk-express@3.1.0:
+  version "3.1.0"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/aws-xray-sdk-express/-/aws-xray-sdk-express-3.1.0.tgz#9f6949150704952dcf94424bfcc3037a55225377"
+  integrity sha1-n2lJFQcElS3PlEJL/MMDelUiU3c=
+  dependencies:
+    "@types/express" "*"
+
+aws-xray-sdk-mysql@3.1.0:
+  version "3.1.0"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/aws-xray-sdk-mysql/-/aws-xray-sdk-mysql-3.1.0.tgz#27ddcb2a2ff22835bdf7b87ddf115d93601227b7"
+  integrity sha1-J93LKi/yKDW997h93xFdk2ASJ7c=
+  dependencies:
+    "@types/mysql" "*"
+
+aws-xray-sdk-postgres@3.1.0:
+  version "3.1.0"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/aws-xray-sdk-postgres/-/aws-xray-sdk-postgres-3.1.0.tgz#411e314f3d7eb8d0d0274d81da296869ba299346"
+  integrity sha1-QR4xTz1+uNDQJ02B2iloabopk0Y=
+  dependencies:
+    "@types/pg" "*"
+
+aws-xray-sdk@^3.1.0:
+  version "3.1.0"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/aws-xray-sdk/-/aws-xray-sdk-3.1.0.tgz#412cde864a2c2e321723eb78e065f7b53d70051c"
+  integrity sha1-QSzehkosLjIXI+t44GX3tT1wBRw=
+  dependencies:
+    aws-xray-sdk-core "3.1.0"
+    aws-xray-sdk-express "3.1.0"
+    aws-xray-sdk-mysql "3.1.0"
+    aws-xray-sdk-postgres "3.1.0"
+    pkginfo "^0.4.0"
 
 aws4@^1.8.0:
   version "1.10.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/aws4/-/aws4-1.10.0.tgz#a17b3a8ea811060e74d47d306122400ad4497ae2"
   integrity sha1-oXs6jqgRBg501H0wYSJACtRJeuI=
 
-axios@^0.19.0, axios@^0.19.2:
+axios@^0.19.0:
   version "0.19.2"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
   integrity sha1-PqNsXYgY0NX4qKl6bTa4bNwAyyc=
@@ -1428,11 +1446,6 @@ bluebird@^3.5.2:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha1-nyKcFb4nJFT/qXOs4NvueaGww28=
 
-bn.js@^4.0.0, bn.js@^4.4.0:
-  version "4.11.9"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/bn.js/-/bn.js-4.11.9.tgz#26d556829458f9d1e81fc48952493d0ba3507828"
-  integrity sha1-JtVWgpRY+dHoH8SJUkk9C6NQeCg=
-
 body-parser@1.19.0:
   version "1.19.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/body-parser/-/body-parser-1.19.0.tgz#96b2709e57c9c4e09a6fd66a8fd979844f69f08a"
@@ -1498,11 +1511,6 @@ braces@^3.0.1, braces@~3.0.2:
   integrity sha1-NFThpGLujVmeI23zNs2epPiv4Qc=
   dependencies:
     fill-range "^7.0.1"
-
-brorand@^1.0.1:
-  version "1.1.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
-  integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
 browser-process-hrtime@^1.0.0:
   version "1.0.0"
@@ -1749,19 +1757,6 @@ chokidar@^3.2.2, chokidar@^3.4.0:
   optionalDependencies:
     fsevents "~2.1.2"
 
-chromedriver@latest:
-  version "84.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/chromedriver/-/chromedriver-84.0.1.tgz#eaca7723f1a58c262a5c521b8596769af40b0d4f"
-  integrity sha1-6sp3I/GljCYqXFIbhZZ2mvQLDU8=
-  dependencies:
-    "@testim/chrome-version" "^1.0.7"
-    axios "^0.19.2"
-    del "^5.1.0"
-    extract-zip "^2.0.1"
-    https-proxy-agent "^5.0.0"
-    mkdirp "^1.0.4"
-    tcp-port-used "^1.0.1"
-
 ci-info@^2.0.0:
   version "2.0.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
@@ -1793,11 +1788,6 @@ clean-css@^4.1.11:
   integrity sha1-UHtd59l7SO5T2ErbAWD/YhY4D3g=
   dependencies:
     source-map "~0.6.0"
-
-clean-stack@^2.0.0:
-  version "2.2.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/clean-stack/-/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
-  integrity sha1-7oRy27Ep5yezHooQpCfe6d/kAIs=
 
 cli-boxes@^2.2.0:
   version "2.2.0"
@@ -1861,6 +1851,15 @@ clone-response@^1.0.2:
   integrity sha1-0dyXOSAxTfZ/vrlCI7TuNQI56Ws=
   dependencies:
     mimic-response "^1.0.0"
+
+cls-hooked@^4.2.2:
+  version "4.2.2"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/cls-hooked/-/cls-hooked-4.2.2.tgz#ad2e9a4092680cdaffeb2d3551da0e225eae1908"
+  integrity sha1-rS6aQJJoDNr/6y01UdoOIl6uGQg=
+  dependencies:
+    async-hook-jl "^1.7.6"
+    emitter-listener "^1.0.1"
+    semver "^5.4.1"
 
 co@^4.6.0:
   version "4.6.0"
@@ -2212,20 +2211,6 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@~2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
-  version "4.1.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
-  integrity sha1-O3ImAlUQnGtYnO4FDx1RYTlmR5E=
-  dependencies:
-    ms "^2.1.1"
-
-debug@4.1.0:
-  version "4.1.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
-  integrity sha1-NzaHv/pnizixzZH4YbY4UANd3Ic=
-  dependencies:
-    ms "^2.1.1"
-
 debug@=3.1.0:
   version "3.1.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
@@ -2237,6 +2222,13 @@ debug@^3.1.0, debug@^3.2.6:
   version "3.2.6"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
   integrity sha1-6D0X3hbYp++3cX7b5fsQE17uYps=
+  dependencies:
+    ms "^2.1.1"
+
+debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
+  version "4.1.1"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
+  integrity sha1-O3ImAlUQnGtYnO4FDx1RYTlmR5E=
   dependencies:
     ms "^2.1.1"
 
@@ -2269,7 +2261,7 @@ deep-extend@^0.6.0:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
   integrity sha1-xPp8lUBKF6nD6Mp+FTcxK3NjMKw=
 
-deep-is@^0.1.3, deep-is@~0.1.3:
+deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
@@ -2313,20 +2305,6 @@ define-property@^2.0.2:
     is-descriptor "^1.0.2"
     isobject "^3.0.1"
 
-del@^5.1.0:
-  version "5.1.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/del/-/del-5.1.0.tgz#d9487c94e367410e6eff2925ee58c0c84a75b3a7"
-  integrity sha1-2Uh8lONnQQ5u/ykl7ljAyEp1s6c=
-  dependencies:
-    globby "^10.0.1"
-    graceful-fs "^4.2.2"
-    is-glob "^4.0.1"
-    is-path-cwd "^2.2.0"
-    is-path-inside "^3.0.1"
-    p-map "^3.0.0"
-    rimraf "^3.0.0"
-    slash "^3.0.0"
-
 delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
@@ -2369,13 +2347,6 @@ diff@^4.0.1:
   version "4.0.2"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
   integrity sha1-YPOuy4nV+uUgwRqhnvwruYKq3n0=
-
-dir-glob@^3.0.1:
-  version "3.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/dir-glob/-/dir-glob-3.0.1.tgz#56dbf73d992a4a93ba1584f4534063fd2e41717f"
-  integrity sha1-Vtv3PZkqSpO6FYT0U0Bj/S5BcX8=
-  dependencies:
-    path-type "^4.0.0"
 
 doctrine@3.0.0, doctrine@^3.0.0:
   version "3.0.0"
@@ -2537,18 +2508,12 @@ ejs@^3.1.3:
   dependencies:
     jake "^10.6.1"
 
-elliptic@^6.5.3:
-  version "6.5.3"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/elliptic/-/elliptic-6.5.3.tgz#cb59eb2efdaf73a0bd78ccd7015a62ad6e0f93d6"
-  integrity sha1-y1nrLv2vc6C9eMzXAVpirW4Pk9Y=
+emitter-listener@^1.0.1:
+  version "1.1.2"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/emitter-listener/-/emitter-listener-1.1.2.tgz#56b140e8f6992375b3d7cb2cab1cc7432d9632e8"
+  integrity sha1-VrFA6PaZI3Wz18ssqxzHQy2WMug=
   dependencies:
-    bn.js "^4.4.0"
-    brorand "^1.0.1"
-    hash.js "^1.0.0"
-    hmac-drbg "^1.0.0"
-    inherits "^2.0.1"
-    minimalistic-assert "^1.0.0"
-    minimalistic-crypto-utils "^1.0.0"
+    shimmer "^1.2.0"
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -2856,6 +2821,21 @@ expect@^25.5.0:
     jest-message-util "^25.5.0"
     jest-regex-util "^25.2.6"
 
+express-jwt@^6.0.0:
+  version "6.0.0"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/express-jwt/-/express-jwt-6.0.0.tgz#20886c730983ffb1c706a4383235df86eff349b8"
+  integrity sha1-IIhscwmD/7HHBqQ4MjXfhu/zSbg=
+  dependencies:
+    async "^1.5.0"
+    express-unless "^0.3.0"
+    jsonwebtoken "^8.1.0"
+    lodash.set "^4.0.0"
+
+express-unless@^0.3.0:
+  version "0.3.1"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/express-unless/-/express-unless-0.3.1.tgz#2557c146e75beb903e2d247f9b5ba01452696e20"
+  integrity sha1-JVfBRudb65A+LSR/m1ugFFJpbiA=
+
 express@^4.17.1:
   version "4.17.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
@@ -2935,7 +2915,7 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-extract-zip@^2.0.0, extract-zip@^2.0.1:
+extract-zip@^2.0.0:
   version "2.0.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/extract-zip/-/extract-zip-2.0.1.tgz#663dca56fe46df890d5f131ef4a06d22bb8ba13a"
   integrity sha1-Zj3KVv5G34kNXxMe9KBtIruLoTo=
@@ -2961,18 +2941,6 @@ fast-deep-equal@^3.1.1:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha1-On1WtVnWy8PrUSMlJE5hmmXGxSU=
 
-fast-glob@^3.0.3:
-  version "3.2.4"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/fast-glob/-/fast-glob-3.2.4.tgz#d20aefbf99579383e7f3cc66529158c9b98554d3"
-  integrity sha1-0grvv5lXk4Pn88xmUpFYybmFVNM=
-  dependencies:
-    "@nodelib/fs.stat" "^2.0.2"
-    "@nodelib/fs.walk" "^1.2.3"
-    glob-parent "^5.1.0"
-    merge2 "^1.3.0"
-    micromatch "^4.0.2"
-    picomatch "^2.2.1"
-
 fast-json-stable-stringify@2.x, fast-json-stable-stringify@^2.0.0:
   version "2.1.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
@@ -2996,13 +2964,6 @@ fast-safe-stringify@^2.0.4, fast-safe-stringify@^2.0.7:
   version "2.0.7"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/fast-safe-stringify/-/fast-safe-stringify-2.0.7.tgz#124aa885899261f68aedb42a7c080de9da608743"
   integrity sha1-EkqohYmSYfaK7bQqfAgN6dpgh0M=
-
-fastq@^1.6.0:
-  version "1.8.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/fastq/-/fastq-1.8.0.tgz#550e1f9f59bbc65fe185cb6a9b4d95357107f481"
-  integrity sha1-VQ4fn1m7xl/hhctqm02VNXEH9IE=
-  dependencies:
-    reusify "^1.0.4"
 
 fb-watchman@^2.0.0:
   version "2.0.1"
@@ -3299,7 +3260,7 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-glob-parent@^5.0.0, glob-parent@^5.1.0, glob-parent@~5.1.0:
+glob-parent@^5.0.0, glob-parent@~5.1.0:
   version "5.1.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/glob-parent/-/glob-parent-5.1.1.tgz#b6c1ef417c4e5663ea498f1c45afac6916bbc229"
   integrity sha1-tsHvQXxOVmPqSY8cRa+saRa7wik=
@@ -3337,20 +3298,6 @@ globals@^12.1.0:
   dependencies:
     type-fest "^0.8.1"
 
-globby@^10.0.1:
-  version "10.0.2"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/globby/-/globby-10.0.2.tgz#277593e745acaa4646c3ab411289ec47a0392543"
-  integrity sha1-J3WT50WsqkZGw6tBEonsR6A5JUM=
-  dependencies:
-    "@types/glob" "^7.1.1"
-    array-union "^2.1.0"
-    dir-glob "^3.0.1"
-    fast-glob "^3.0.3"
-    glob "^7.1.3"
-    ignore "^5.1.1"
-    merge2 "^1.2.3"
-    slash "^3.0.0"
-
 google-libphonenumber@^3.2.8:
   version "3.2.10"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/google-libphonenumber/-/google-libphonenumber-3.2.10.tgz#021a314652747d736a39e2e60dc670f0431425ad"
@@ -3373,7 +3320,7 @@ got@^9.6.0:
     to-readable-stream "^1.0.0"
     url-parse-lax "^3.0.0"
 
-graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.2, graceful-fs@^4.2.4:
+graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4:
   version "4.2.4"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha1-Ila94U02MpWMRl68ltxGfKB6Kfs=
@@ -3461,14 +3408,6 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hash.js@^1.0.0, hash.js@^1.0.3:
-  version "1.1.7"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
-  integrity sha1-C6vKU46NTuSg+JiNaIZlN6ADz0I=
-  dependencies:
-    inherits "^2.0.3"
-    minimalistic-assert "^1.0.1"
-
 he@1.2.0, he@^1.2.0:
   version "1.2.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
@@ -3478,15 +3417,6 @@ highlight.js@^9.6.0:
   version "9.18.3"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/highlight.js/-/highlight.js-9.18.3.tgz#a1a0a2028d5e3149e2380f8a865ee8516703d634"
   integrity sha1-oaCiAo1eMUniOA+Khl7oUWcD1jQ=
-
-hmac-drbg@^1.0.0:
-  version "1.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
-  integrity sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=
-  dependencies:
-    hash.js "^1.0.3"
-    minimalistic-assert "^1.0.0"
-    minimalistic-crypto-utils "^1.0.1"
 
 hosted-git-info@^2.1.4:
   version "2.8.8"
@@ -3589,14 +3519,6 @@ http-status-codes@^1.4.0:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/http-status-codes/-/http-status-codes-1.4.0.tgz#6e4c15d16ff3a9e2df03b89f3a55e1aae05fb477"
   integrity sha1-bkwV0W/zqeLfA7ifOlXhquBftHc=
 
-https-proxy-agent@^5.0.0:
-  version "5.0.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/https-proxy-agent/-/https-proxy-agent-5.0.0.tgz#e2a90542abb68a762e0a0850f6c9edadfd8506b2"
-  integrity sha1-4qkFQqu2inYuCghQ9sntrf2FBrI=
-  dependencies:
-    agent-base "6"
-    debug "4"
-
 human-signals@^1.1.1:
   version "1.1.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
@@ -3661,11 +3583,6 @@ ignore@^4.0.6:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha1-dQ49tYYgh7RzfrrIIH/9HvJ7Jfw=
 
-ignore@^5.1.1:
-  version "5.1.8"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/ignore/-/ignore-5.1.8.tgz#f150a8b50a34289b33e22f5889abd4d8016f0e57"
-  integrity sha1-8VCotQo0KJsz4i9YiavU2AFvDlc=
-
 import-fresh@^3.0.0, import-fresh@^3.1.0:
   version "3.2.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/import-fresh/-/import-fresh-3.2.1.tgz#633ff618506e793af5ac91bf48b72677e15cbe66"
@@ -3698,11 +3615,6 @@ indent-string@^2.1.0:
   integrity sha1-ji1INIdCEhtKghi3oTfppSBJ3IA=
   dependencies:
     repeating "^2.0.0"
-
-indent-string@^4.0.0:
-  version "4.0.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/indent-string/-/indent-string-4.0.0.tgz#624f8f4497d619b2d9768531d58f4122854d7251"
-  integrity sha1-Yk+PRJfWGbLZdoUx1Y9BIoVNclE=
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -3928,11 +3840,6 @@ is-obj@^2.0.0:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/is-obj/-/is-obj-2.0.0.tgz#473fb05d973705e3fd9620545018ca8e22ef4982"
   integrity sha1-Rz+wXZc3BeP9liBUUBjKjiLvSYI=
 
-is-path-cwd@^2.2.0:
-  version "2.2.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/is-path-cwd/-/is-path-cwd-2.2.0.tgz#67d43b82664a7b5191fd9119127eb300048a9fdb"
-  integrity sha1-Z9Q7gmZKe1GR/ZEZEn6zAASKn9s=
-
 is-path-inside@^3.0.1:
   version "3.0.2"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/is-path-inside/-/is-path-inside-3.0.2.tgz#f5220fc82a3e233757291dddc9c5877f2a1f3017"
@@ -3984,11 +3891,6 @@ is-typedarray@^1.0.0, is-typedarray@~1.0.0:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
   integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
 
-is-url@^1.2.2:
-  version "1.2.4"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/is-url/-/is-url-1.2.4.tgz#04a4df46d28c4cff3d73d01ff06abeb318a1aa52"
-  integrity sha1-BKTfRtKMTP89c9Af8Gq+sxihqlI=
-
 is-utf8@^0.2.0:
   version "0.2.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
@@ -4015,15 +3917,6 @@ is-yarn-global@^0.3.0:
   version "0.3.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/is-yarn-global/-/is-yarn-global-0.3.0.tgz#d502d3382590ea3004893746754c89139973e232"
   integrity sha1-1QLTOCWQ6jAEiTdGdUyJE5lz4jI=
-
-is2@2.0.1:
-  version "2.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/is2/-/is2-2.0.1.tgz#8ac355644840921ce435d94f05d3a94634d3481a"
-  integrity sha1-isNVZEhAkhzkNdlPBdOpRjTTSBo=
-  dependencies:
-    deep-is "^0.1.3"
-    ip-regex "^2.1.0"
-    is-url "^1.2.2"
 
 isarray@0.0.1:
   version "0.0.1"
@@ -4586,7 +4479,7 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jsonwebtoken@^8.1.1:
+jsonwebtoken@^8.1.0, jsonwebtoken@^8.1.1, jsonwebtoken@^8.5.1:
   version "8.5.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/jsonwebtoken/-/jsonwebtoken-8.5.1.tgz#00e71e0b8df54c2121a1f26137df2280673bcc0d"
   integrity sha1-AOceC431TCEhofJhN98igGc7zA0=
@@ -4640,15 +4533,6 @@ jwa@^1.4.1:
     ecdsa-sig-formatter "1.0.11"
     safe-buffer "^5.0.1"
 
-jwk-to-pem@^2.0.0:
-  version "2.0.4"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/jwk-to-pem/-/jwk-to-pem-2.0.4.tgz#774e168697a0b52054e8cfb0bcd57e0f4c398e2d"
-  integrity sha1-d04WhpegtSBU6M+wvNV+D0w5ji0=
-  dependencies:
-    asn1.js "^5.3.0"
-    elliptic "^6.5.3"
-    safe-buffer "^5.0.1"
-
 jws@^3.2.2:
   version "3.2.2"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/jws/-/jws-3.2.2.tgz#001099f3639468c9414000e99995fa52fb478304"
@@ -4656,15 +4540,6 @@ jws@^3.2.2:
   dependencies:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
-
-keycloak-connect@^10.0.0:
-  version "10.0.2"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/keycloak-connect/-/keycloak-connect-10.0.2.tgz#a21003f0a683516b921546fc3d0bdd85d9263a95"
-  integrity sha1-ohAD8KaDUWuSFUb8PQvdhdkmOpU=
-  dependencies:
-    jwk-to-pem "^2.0.0"
-  optionalDependencies:
-    chromedriver latest
 
 keyv@^3.0.0:
   version "3.1.0"
@@ -4860,6 +4735,11 @@ lodash.once@^4.0.0:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
   integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
 
+lodash.set@^4.0.0:
+  version "4.3.2"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
+  integrity sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -5027,11 +4907,6 @@ merge-stream@^2.0.0:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
   integrity sha1-UoI2KaFN0AyXcPtq1H3GMQ8sH2A=
 
-merge2@^1.2.3, merge2@^1.3.0:
-  version "1.4.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/merge2/-/merge2-1.4.1.tgz#4368892f885e907455a6fd7dc55c0c9d404990ae"
-  integrity sha1-Q2iJL4hekHRVpv19xVwMnUBJkK4=
-
 methods@^1.1.1, methods@^1.1.2, methods@~1.1.2:
   version "1.1.2"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
@@ -5100,16 +4975,6 @@ mimic-response@^2.0.0:
   version "2.1.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/mimic-response/-/mimic-response-2.1.0.tgz#d13763d35f613d09ec37ebb30bac0469c0ee8f43"
   integrity sha1-0Tdj019hPQnsN+uzC6wEacDuj0M=
-
-minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
-  version "1.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
-  integrity sha1-LhlN4ERibUoQ5/f7wAznPoPk1cc=
-
-minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
-  version "1.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
-  integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
 
 minimatch@^3.0.4:
   version "3.0.4"
@@ -5540,13 +5405,6 @@ p-locate@^4.1.0:
   dependencies:
     p-limit "^2.2.0"
 
-p-map@^3.0.0:
-  version "3.0.0"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/p-map/-/p-map-3.0.0.tgz#d704d9af8a2ba684e2600d9a215983d4141a979d"
-  integrity sha1-1wTZr4orpoTiYA2aIVmD1BQal50=
-  dependencies:
-    aggregate-error "^3.0.0"
-
 p-try@^2.0.0:
   version "2.2.0"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
@@ -5794,16 +5652,22 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-platform-api@^1.8.15:
-  version "1.8.15"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/platform-api/-/platform-api-1.8.15.tgz#d9ff86ac06822dfe0413c2d31346d759b56207dc"
-  integrity sha1-2f+GrAaCLf4EE8LTE0bXWbViB9w=
+pkginfo@^0.4.0:
+  version "0.4.1"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
+  integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
+
+platform-api@^2.0.0:
+  version "2.0.1"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/platform-api/-/platform-api-2.0.1.tgz#4a2789406cc3250b58163ade624690a8d0e01433"
+  integrity sha1-SieJQGzDJQtYFjreYkaQqNDgFDM=
   dependencies:
     "@elastic/app-search-node" "^7.8.0"
     "@elastic/ecs-winston-format" "^0.2.0"
     "@elastic/elasticsearch" "^7.7.1"
     "@slack/webhook" "^5.0.3"
     amqplib "^0.5.6"
+    aws-xray-sdk "^3.1.0"
     bee-queue "^1.2.3"
     class-validator "^0.12.2"
     convict "^6.0.0"
@@ -5812,13 +5676,14 @@ platform-api@^1.8.15:
     ejs "^3.1.3"
     eventemitter2 "^6.4.3"
     express "^4.17.1"
+    express-jwt "^6.0.0"
     extract-zip "^2.0.0"
     fs-extra "^9.0.0"
     http-errors "^1.8.0"
     http-status-codes "^1.4.0"
     json5 "^2.1.3"
+    jsonwebtoken "^8.5.1"
     juice "^7.0.0"
-    keycloak-connect "^10.0.0"
     lodash "^4.17.15"
     lru-cache "^5.1.1"
     moment "^2.24.0"
@@ -6470,11 +6335,6 @@ ret@~0.1.10:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
   integrity sha1-uKSCXVvbH8P29Twrwz+BOIaBx7w=
 
-reusify@^1.0.4:
-  version "1.0.4"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
-  integrity sha1-kNo4Kx4SbvwCFG6QhFqI2xKSXXY=
-
 right-align@^0.1.1:
   version "0.1.3"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/right-align/-/right-align-0.1.3.tgz#61339b722fe6a3515689210d24e14c96148613ef"
@@ -6512,11 +6372,6 @@ run-async@^2.4.0:
   version "2.4.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
   integrity sha1-hEDsz5nqPnC9QJ1JqriOEMGJpFU=
-
-run-parallel@^1.1.9:
-  version "1.1.9"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/run-parallel/-/run-parallel-1.1.9.tgz#c9dd3a7cf9f4b2c4b6244e173a6ed866e61dd679"
-  integrity sha1-yd06fPn0ssS2JE4XOm7YZuYd1nk=
 
 rxjs@^6.6.0:
   version "6.6.0"
@@ -6596,7 +6451,7 @@ semver-regex@^2.0.0:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/semver-regex/-/semver-regex-2.0.0.tgz#a93c2c5844539a770233379107b38c7b4ac9d338"
   integrity sha1-qTwsWERTmncCMzeRB7OMe0rJ0zg=
 
-"semver@2 || 3 || 4 || 5", semver@^5.4.1, semver@^5.5.0, semver@^5.6.0, semver@^5.7.1:
+"semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.6.0, semver@^5.7.1:
   version "5.7.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha1-qVT5Ma66UI0we78Gnv8MAclhFvc=
@@ -6711,6 +6566,11 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha1-1rkYHBpI05cyTISHHvvPxz/AZUs=
+
+shimmer@^1.2.0:
+  version "1.2.1"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/shimmer/-/shimmer-1.2.1.tgz#610859f7de327b587efebf501fb43117f9aff337"
+  integrity sha1-YQhZ994ye1h+/r9QH7QxF/mv8zc=
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.3"
@@ -6888,6 +6748,11 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
+
+stack-chain@^1.3.7:
+  version "1.3.7"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/stack-chain/-/stack-chain-1.3.7.tgz#d192c9ff4ea6a22c94c4dd459171e3f00cea1285"
+  integrity sha1-0ZLJ/06moiyUxN1FkXHj8AzqEoU=
 
 stack-trace@0.0.x:
   version "0.0.10"
@@ -7170,14 +7035,6 @@ table@^5.2.3:
     lodash "^4.17.14"
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
-
-tcp-port-used@^1.0.1:
-  version "1.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/tcp-port-used/-/tcp-port-used-1.0.1.tgz#46061078e2d38c73979a2c2c12b5a674e6689d70"
-  integrity sha1-RgYQeOLTjHOXmiwsErWmdOZonXA=
-  dependencies:
-    debug "4.1.0"
-    is2 "2.0.1"
 
 tdigest@^0.1.1:
   version "0.1.1"

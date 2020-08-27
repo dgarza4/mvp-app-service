@@ -43,19 +43,19 @@ USER scooby
 # ADD WHATEVER ENVIRONMENT VARIABLE THE SERVICE NEEDS
 #-------------------------------------------------------
 
-# backend auth server url
-ENV KEYCLOAK_BACKEND_AUTH_SERVER_URL='https://keycloak.cluster1.endvr-digital-dev.com/auth/'
-ENV KEYCLOAK_BACKEND_CLIENT='mvp-app-backend'
-ENV KEYCLOAK_BACKEND_CREDENTIALS_SECRET='secret'
+# If aws-cognito, it is the id of an application created in the user pool.
+# IMPORTANT: the application must be created with `Generate client secret` NOT SET
+ENV AUTH_PROVIDER_CLIENT_ID=""
+# if aws-cognito, the User Pool's region
+ENV AUTH_PROVIDER_REGION=""
+# This is the user designed to be represent the service
+ENV AUTH_PROVIDER_SERVICE_USERNAME=""
+ENV AUTH_PROVIDER_SERVICE_PASSWORD=""
 
-# frontend auth server url
-ENV KEYCLOAK_FRONTEND_AUTH_SERVER_URL='https://keycloak.cluster1.endvr-digital-dev.com/auth/'
-ENV KEYCLOAK_FRONTEND_CLIENT='mvp-app-frontend'
-
-ENV KEYCLOAK_REALM='mvpapp'
-
-ENV SDK_AUTH_URL='http://localhost:3080/api/auth/v1/auth/'
-ENV SDK_NOTIFICATIONS_URL='http://localhost:3080/api/notifications/v1/notifications/'
+# Accounts service URL
+ENV SDK_ACCOUNTS_URL="http://accounts-service/api/accounts/v1/"
+# Notifications service URL
+ENV SDK_NOTIFICATIONS_URL="http://notifications-service/api/notifications/v1/notifications/"
 
 EXPOSE 3080/tcp
 

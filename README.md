@@ -24,16 +24,34 @@ yarn
 First you will need to build the `Dockerfile.dev` local image:
 
 ```sh
+yarn run docker:build-dev
+```
+
+or, manually:
+
+```sh
 docker build -t mvp-app-service -f Dockerfile.dev .
 ```
 
 You need to have `kubectl` access to the Kubernetes `cluster1.endvr-digital-dev.com` dev cluster and [Telepresence](https://www.telepresence.io/reference/install) installed.
 
+You will also need to scale the deployed service to `1` before starting it locally, or you will not receive all requests.
+
 ```sh
-yarn start-dev-tp
+yarn start k8s:scale-down
 ```
 
-Will scale the deployed service to `1` and start it locally, exposing it inside the Kubernetes cluster (swapping the current running one) and locally at port `${TP_PORT:-3080}`.
+Which is equivalent to:
+
+```sh
+kubectl -n mvp-app-develop scale --replicas=1 deployment mvp-app-service
+```
+
+The following will start the local container exposing it inside the Kubernetes cluster (swapping the current running one) and locally at port `${TP_PORT:-3080}`:
+
+```sh
+yarn tp:start-dev
+```
 
 Now you can edit the code inside the `./src/` folder and have the server automatically restarted on change. Also the local `./config` folder is made accessible from inside the container.
 

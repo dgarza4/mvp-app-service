@@ -19,6 +19,24 @@ yarn
 # npm install
 ```
 
+### Kubernetes
+
+First you will need to build the `Dockerfile.dev` local image:
+
+```sh
+docker build -t mvp-app-service -f Dockerfile.dev .
+```
+
+You need to have `kubectl` access to the Kubernetes `cluster1.endvr-digital-dev.com` dev cluster and [Telepresence](https://www.telepresence.io/reference/install) installed.
+
+```sh
+yarn start-dev-tp
+```
+
+Will scale the deployed service to `1` and start it locally, exposing it inside the Kubernetes cluster (swapping the current running one) and locally at port `${TP_PORT:-3080}`.
+
+Now you can edit the code inside the `./src/` folder and have the server automatically restarted on change. Also the local `./config` folder is made accessible from inside the container.
+
 ### Start
 
 First we need to provide some configuration to be able to generate JWT tokens for inter-service communication:

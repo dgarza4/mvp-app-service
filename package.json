@@ -40,6 +40,7 @@
   "scripts": {
     "start-dev": "TS_NODE_TYPE_CHECK=true NODE_ENV=dev npx ts-node-dev --respawn --transpile-only src/index.ts",
     "start-dev-k8s": "TS_NODE_TYPE_CHECK=true npx ts-node-dev --poll --respawn --transpile-only src/index.ts",
+    "start-dev-tp": "kubectl -n mvp-app-develop scale --replicas=1 deployment mvp-app-service && telepresence --namespace mvp-app-develop --expose 3080 --swap-deployment mvp-app-service --docker-run --rm -it  -p ${TP_PORT:-3080}:3080 --entrypoint='' -v $(pwd)/src:/app/src -v $(pwd)/config:/app/config mvp-app-service:latest yarn start-dev",
     "format": "prettier --write \"src/**/*.{js,ts}\"",
     "lint": "eslint --ext .js,.ts src/",
     "lint-fix": "eslint --fix --ext .js,.ts src/",

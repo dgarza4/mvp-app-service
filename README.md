@@ -21,6 +21,19 @@ yarn
 
 ### Kubernetes
 
+#### Setup
+
+You need to have `kubectl` access to the Kubernetes `cluster1.endvr-digital-dev.com` dev cluster and [Telepresence](https://www.telepresence.io/reference/install) installed.
+
+To avoid SSH connection timeouts, add to your `~/.ssh/config` the following:
+
+```txt
+Host *
+ ServerAliveInterval 30
+```
+
+#### Build
+
 First you will need to build the `Dockerfile.dev` local image:
 
 ```sh
@@ -33,9 +46,11 @@ or, manually:
 docker build -t mvp-app-service -f Dockerfile.dev .
 ```
 
-You need to have `kubectl` access to the Kubernetes `cluster1.endvr-digital-dev.com` dev cluster and [Telepresence](https://www.telepresence.io/reference/install) installed.
+#### Pre Deployment
 
 You will also need to scale the deployed service to `1` before starting it locally, or you will not receive all requests.
+
+You can:
 
 ```sh
 yarn start k8s:scale-down
@@ -46,6 +61,34 @@ Which is equivalent to:
 ```sh
 kubectl -n mvp-app-develop scale --replicas=1 deployment mvp-app-service
 ```
+
+But keep in mind that if replicas are managed under Gitops, they will be reset by Flux. You might need to edit the configuration file in the git repo.
+
+If the service is deployed using Flux, we need also to stop Flux trying to restart it:
+
+```sh
+yarn run k8s:flux-disable
+```
+
+which is the equivalent of:
+
+```sh
+kubectl -n mvp-app-develop annotate deployment mvp-app-service 'fluxcd.io/ignore=true'
+```
+
+**REMEMBER** to remove the annotation when done!
+
+```sh
+yarn run k8s:flux-enable
+```
+
+which is the equivalent of:
+
+```sh
+kubectl -n mvp-app-develop annotate deployment mvp-app-service 'fluxcd.io/ignore-'
+```
+
+#### Deployment
 
 The following will start the local container exposing it inside the Kubernetes cluster (swapping the current running one) and locally at port `${TP_PORT:-3080}`:
 

@@ -53,7 +53,7 @@ You will also need to scale the deployed service to `1` before starting it local
 You can:
 
 ```sh
-yarn start k8s:scale-down
+yarn run k8s:scale-down
 ```
 
 Which is equivalent to:
@@ -136,6 +136,16 @@ All configurations can be found in the `./config/` folder. The `default.json` is
 
 ```sh
 npx ts-node src/index.ts --help
+```
+
+## Debug
+
+The project includes a Visual Studio Code launch configuration named `Attach to NodeJS debugger`, configured to attach to a local inspector listening at port `5858`.
+
+This is also the port exposed when starting Telepresence with:
+
+```sh
+yarn run tp:start-dev:debug
 ```
 
 ## Migrations

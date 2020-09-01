@@ -133,7 +133,7 @@
         "verifyToken": false
       },
       // JWT field that contains the unique user ID
-      "jwtUserIdField": "email"
+      "jwtUserIdField": "sub"
     },
 
     // NotificationsManager: abstracts basic in-service notification functionalities
@@ -275,7 +275,10 @@
   // Services specific configurations. the key is the service name.
   "services": {
     "todo": {
-      "enabled": true
+      "enabled": true,
+      "notifications": {
+        "fromAddress": "mvp-app-bot@mvp-app.cluster1.endvr-digital-dev.com"
+      }
     }
   }
 }

@@ -3,8 +3,8 @@ import express from "express";
 import { Todo } from "../entities/todo";
 import { ControllerCRUD, Auth } from "platform-api";
 import { Controller, Get, Post, Put, Delete } from "platform-api";
-import { NOTIFICATION_TARGET_TYPE } from "platform-api";
-import { requestUserToUserInfo } from "platform-api";
+import { requestUserId } from "platform-api";
+import { TodosContext } from "../context/todos";
 
 /**
  * @swagger
@@ -39,6 +39,9 @@ import { requestUserToUserInfo } from "platform-api";
 class TodosController extends ControllerCRUD {
   public entityName = "todo";
   public entityClass = Todo;
+
+  // All business logic happens in the context
+  protected contextClass: any = TodosContext;
 
   public async start(): Promise<void> {
     super.start();
@@ -85,7 +88,7 @@ class TodosController extends ControllerCRUD {
     req: any,
     searchOptions: any
   ): Promise<any> {
-    const userId = req.user.email;
+    const userId = requestUserId(req);
     const whereOptions = [];
 
     whereOptions.push([`${this.entityName}.user_id = :userId`, { userId }]);
@@ -165,7 +168,7 @@ class TodosController extends ControllerCRUD {
   }
 
   protected async preProcessPostPayload(req: any, payload: any): Promise<any> {
-    const userId = req.user.email;
+    const userId = requestUserId(req);
 
     // eslint-disable-next-line @typescript-eslint/camelcase
     payload.user_id = userId;
@@ -208,69 +211,8 @@ class TodosController extends ControllerCRUD {
     req: express.Request,
     res: express.Response
   ): Promise<any> {
-    const todo = await super.put(req, res);
-
-    await this.notifyUser(requestUserToUserInfo(req), todo);
-
-    return todo;
+    return super.put(req, res);
   }
-
-  protected async notifyUser(user: any, todo: any) {
-    const options: any = {
-      fromAddress: "mvp-app-bot@mvp-app.cluster1.endvr-digital-dev.com",
-    };
-
-    const targetMessages = [
-      {
-        targetType: NOTIFICATION_TARGET_TYPE.USER,
-        target: user,
-        messageType: "mvp-app-task-completed",
-        options,
-      },
-      {
-        targetType: NOTIFICATION_TARGET_TYPE.SLACK_CHANNEL,
-        target: "#",
-        messageType: "mvp-app-task-completed",
-        options,
-      },
-    ];
-
-    const payload = {
-      user,
-      todo,
-    };
-
-    await this.notifyTargets(targetMessages, payload, {
-      success:
-        "server.service.todo.notifyUser: successfully sent todo notification to '${JSON.stringify(target)}'",
-      error:
-        "server.service.todo.notifyUser: error sending todo notification to '${JSON.stringify(target)}' as ${error}\n${error.stack}",
-    });
-  }
-
-  protected notifyTargets = async (
-    targetMessages: any[],
-    payload: any,
-    logMessages: any = {},
-    _useSDK = false
-  ) => {
-    const ps: any = [];
-
-    _.forEach(targetMessages, (targetMessage) => {
-      ps.push(
-        this.registry.api.notifications.notifyTargetType(
-          targetMessage.targetType,
-          targetMessage.target,
-          targetMessage.messageType,
-          payload,
-          targetMessage.options,
-          logMessages
-        )
-      );
-    });
-
-    await Promise.all(ps);
-  };
 
   /**
    * @swagger

@@ -32,6 +32,20 @@ Host *
  ServerAliveInterval 30
 ```
 
+### Environment Variables
+
+You can change the yarn command parameters setting the following environment variables:
+
+```sh
+export K8S_NAMESPACE="<SERVICE_NAMESPACE>"
+export K8S_DEPLOYMENT="<SERVICE_DEPLOYMENT>"
+export K8S_NAMESPACE="<SERVICE_NAMESPACE>"
+export TP_PORT="<LOCALHOST_EXPOSED_SERVICE_PORT"
+export DEBUG_PORT="<NODEJS_INSPECTOR_PORT>"
+```
+
+If you change the `DEBUG_PORT` you will need to change the `port` value in the `.vscode/launch.json` configuration to match the env variable one.
+
 #### Build
 
 First you will need to build the `Dockerfile.dev` local image:
@@ -59,7 +73,7 @@ yarn run k8s:scale-down
 Which is equivalent to:
 
 ```sh
-kubectl -n mvp-app-develop scale --replicas=1 deployment mvp-app-service
+kubectl -n ${K8S_NAMESPACE:-mvp-app-develop} scale --replicas=1 deployment ${K8S_DEPLOYMENT:-mvp-app-service}
 ```
 
 But keep in mind that if replicas are managed under Gitops, they will be reset by Flux. You might need to edit the configuration file in the git repo.
@@ -73,7 +87,7 @@ yarn run k8s:flux-disable
 which is the equivalent of:
 
 ```sh
-kubectl -n mvp-app-develop annotate deployment mvp-app-service 'fluxcd.io/ignore=true'
+kubectl -n ${K8S_NAMESPACE:-mvp-app-develop} annotate deployment ${K8S_DEPLOYMENT:-mvp-app-service} 'fluxcd.io/ignore=true'
 ```
 
 **REMEMBER** to remove the annotation when done!
@@ -85,7 +99,7 @@ yarn run k8s:flux-enable
 which is the equivalent of:
 
 ```sh
-kubectl -n mvp-app-develop annotate deployment mvp-app-service 'fluxcd.io/ignore-'
+kubectl -n ${K8S_NAMESPACE:-mvp-app-develop} annotate deployment ${K8S_DEPLOYMENT:-mvp-app-service} 'fluxcd.io/ignore-'
 ```
 
 #### Deployment
@@ -140,12 +154,18 @@ npx ts-node src/index.ts --help
 
 ## Debug
 
-The project includes a Visual Studio Code launch configuration named `Attach to NodeJS debugger`, configured to attach to a local inspector listening at port `5858`.
+The project includes a Visual Studio Code launch configuration named `Attach to NodeJS debugger`, configured to attach to a local inspector listening at port `9229`.
 
 This is also the port exposed when starting Telepresence with:
 
 ```sh
 yarn run tp:start-dev:debug
+```
+
+which is the equivalent of:
+
+```sh
+telepresence --namespace ${K8S_NAMESPACE:-mvp-app-develop} --expose 3080 --swap-deployment ${K8S_DEPLOYMENT:-mvp-app-service} --docker-run --rm -it -p ${TP_PORT:-3080}:3080 -p ${DEBUG_PORT:-9229}:9229 --entrypoint='' -v $(pwd)/src:/app/src -v $(pwd)/config:/app/config mvp-app-service:latest yarn start-dev:debug
 ```
 
 ## Migrations

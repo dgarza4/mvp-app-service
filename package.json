@@ -43,7 +43,7 @@
     "start-dev-k8s": "TS_NODE_TYPE_CHECK=true npx ts-node-dev --poll --respawn --transpile-only src/index.ts",
     "tp:start-dev": "telepresence --namespace ${K8S_NAMESPACE:-mvp-app-develop} --expose 3080 --swap-deployment ${K8S_DEPLOYMENT:-mvp-app-service} --docker-run --rm -it -p ${TP_PORT:-3080}:3080 --entrypoint='' -v $(pwd)/src:/app/src -v $(pwd)/config:/app/config mvp-app-service:latest yarn start-dev",
     "tp:start-dev:debug": "telepresence --namespace ${K8S_NAMESPACE:-mvp-app-develop} --expose 3080 --swap-deployment ${K8S_DEPLOYMENT:-mvp-app-service} --docker-run --rm -it -p ${TP_PORT:-3080}:3080 -p ${DEBUG_PORT:-9229}:9229 --entrypoint='' -v $(pwd)/src:/app/src -v $(pwd)/config:/app/config mvp-app-service:latest yarn start-dev:debug",
-    "k8s:scale-down": "kubectl -n ${K8S_NAMESPACE:-mvp-app-develop scale} --replicas=1 deployment mvp-app-service",
+    "k8s:scale-down": "kubectl -n ${K8S_NAMESPACE:-mvp-app-develop} scale --replicas=1 deployment mvp-app-service",
     "k8s:flux-disable": "kubectl -n ${K8S_NAMESPACE:-mvp-app-develop} annotate deployment ${K8S_DEPLOYMENT:-mvp-app-service} 'fluxcd.io/ignore=true'",
     "k8s:flux-enable": "kubectl -n ${K8S_NAMESPACE:-mvp-app-develop} annotate deployment ${K8S_DEPLOYMENT:-mvp-app-service} 'fluxcd.io/ignore-'",
     "docker:build-dev": "docker build -t mvp-app-service -f Dockerfile.dev .",

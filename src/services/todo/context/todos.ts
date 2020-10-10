@@ -1,7 +1,6 @@
 import _ from "lodash";
 import { ContextCRUD } from "platform-api";
 import { NOTIFICATION_TARGET_TYPE } from "platform-api";
-import { requestUserId } from "platform-api";
 
 // Place all your business logic inside contexts
 export class TodosContext extends ContextCRUD {

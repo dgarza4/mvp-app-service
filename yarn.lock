@@ -5657,10 +5657,10 @@ pkginfo@^0.4.0:
   resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
   integrity sha1-tUGO8EOd5UJfxJlQQtztFPsqhP8=
 
-platform-api@^2.0.0:
-  version "2.0.1"
-  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/platform-api/-/platform-api-2.0.1.tgz#4a2789406cc3250b58163ade624690a8d0e01433"
-  integrity sha1-SieJQGzDJQtYFjreYkaQqNDgFDM=
+platform-api@^2.0.3:
+  version "2.0.7"
+  resolved "https://pkgs.dev.azure.com/endeavor-digital/f868c0dc-bb5d-49ef-a77a-33065e543b59/_packaging/experiences-npm-packages/npm/registry/platform-api/-/platform-api-2.0.7.tgz#cbf4da6c1aae5c170c71e010acc7f0db30dd9b6d"
+  integrity sha1-y/TabBquXBcMceAQrMfw2zDdm20=
   dependencies:
     "@elastic/app-search-node" "^7.8.0"
     "@elastic/ecs-winston-format" "^0.2.0"

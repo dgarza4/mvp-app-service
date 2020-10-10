@@ -24,26 +24,14 @@ export class TodosContext extends ContextCRUD {
     );
 
     if (payload.done) {
-      const userId = requestUserId(authOptions);
-      const user = await this.registry.api.auth.getAccountFromIdentity(userId);
-
-      if (!_.isEmpty(user)) {
-        await this.notifyUser(user, entity);
-      } else {
-        this.logger.warning(
-          "server.service.todo.context.updateEntity: unknown account '${userId}'",
-          {
-            userId,
-          }
-        );
-      }
+      await this.notifyUser(authOptions.account, entity);
     }
 
     return entity;
   }
 
   // Example method used to send a notification to the test service user ont task completion
-  protected async notifyUser(user: any, todo: any) {
+  protected async notifyUser(account: any, todo: any) {
     const options: any = {
       fromAddress: this.config.getSafe(
         "services.todo.notifications.fromAddress",
@@ -56,8 +44,8 @@ export class TodosContext extends ContextCRUD {
     );
     const targetMessages = [
       {
-        targetType: NOTIFICATION_TARGET_TYPE.USER,
-        target: user,
+        targetType: NOTIFICATION_TARGET_TYPE.ACCOUNT,
+        target: account,
         messageType: messageType,
         options,
       },
@@ -70,7 +58,7 @@ export class TodosContext extends ContextCRUD {
     ];
 
     const payload = {
-      user,
+      user: account,
       todo,
     };
 

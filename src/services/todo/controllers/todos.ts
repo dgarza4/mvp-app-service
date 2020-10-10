@@ -3,7 +3,6 @@ import express from "express";
 import { Todo } from "../entities/todo";
 import { ControllerCRUD, Auth } from "platform-api";
 import { Controller, Get, Post, Put, Delete } from "platform-api";
-import { requestUserId } from "platform-api";
 import { TodosContext } from "../context/todos";
 
 /**
@@ -76,30 +75,12 @@ class TodosController extends ControllerCRUD {
    *                 $ref: '#/components/schemas/Todo'
    */
   @Get("/")
-  @Auth()
+  @Auth({ includeAccount: true, verifyEntityAccount: true })
   protected async find(
     req: express.Request,
     res: express.Response
   ): Promise<any> {
     return super.find(req, res);
-  }
-
-  protected async preProcessSearchOptions(
-    req: any,
-    searchOptions: any
-  ): Promise<any> {
-    const userId = requestUserId(req);
-    const whereOptions = [];
-
-    whereOptions.push([`${this.entityName}.user_id = :userId`, { userId }]);
-
-    if (_.isEmpty(searchOptions.andWhere)) {
-      searchOptions.andWhere = whereOptions;
-    } else {
-      searchOptions.andWhere = _.concat(whereOptions, searchOptions.andWhere);
-    }
-
-    return searchOptions;
   }
 
   /**
@@ -123,7 +104,7 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Get("/:id")
-  @Auth()
+  @Auth({ includeAccount: true, verifyEntityAccount: true })
   protected async get(
     req: express.Request,
     res: express.Response
@@ -159,21 +140,12 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Post("/")
-  @Auth()
+  @Auth({ includeAccount: true, verifyEntityAccount: true })
   protected async post(
     req: express.Request,
     res: express.Response
   ): Promise<any> {
     return super.post(req, res);
-  }
-
-  protected async preProcessPostPayload(req: any, payload: any): Promise<any> {
-    const userId = requestUserId(req);
-
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    payload.user_id = userId;
-
-    return payload;
   }
 
   /**
@@ -206,7 +178,7 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Put("/:id")
-  @Auth()
+  @Auth({ includeAccount: true, verifyEntityAccount: true })
   protected async put(
     req: express.Request,
     res: express.Response
@@ -235,7 +207,7 @@ class TodosController extends ControllerCRUD {
    *               $ref: '#/components/schemas/Todo'
    */
   @Delete("/:id")
-  @Auth()
+  @Auth({ includeAccount: true, verifyEntityAccount: true })
   protected async delete(
     req: express.Request,
     res: express.Response

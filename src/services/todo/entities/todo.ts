@@ -8,7 +8,7 @@ export class Todo extends ServiceBaseEntity {
   @Index()
   @IsString()
   @IsNotEmpty()
-  public user_id: string;
+  public account_id: string;
 
   @Column({ nullable: false, type: "text" })
   @IsString()

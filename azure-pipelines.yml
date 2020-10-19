@@ -16,6 +16,10 @@ variables:
 pool: "Kubernetes-Dev-Cluster"
 
 steps:
+  - task: npmAuthenticate@0
+    inputs:
+      workingFile: ".npmrc"
+
   - task: Npm@1
     inputs:
       command: "install"

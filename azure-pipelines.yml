@@ -16,6 +16,10 @@ variables:
 pool: "Kubernetes-Dev-Cluster"
 
 steps:
+  - task: npmAuthenticate@0
+    inputs:
+      workingFile: ".npmrc"
+
   - task: Npm@1
     inputs:
       command: "install"
@@ -27,14 +31,17 @@ steps:
       script: |
         /usr/tools/dependency-check/bin/dependency-check.sh --project "$(imageName)" --scan "." -f JSON --disableAssembly --suppression dependency-check-suppressions.xml
       failOnStderr: false
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 
   - task: SonarQubePrepare@4
     inputs:
       SonarQube: "k8s-dev-sonarkube"
       scannerMode: "CLI"
       configMode: "file"
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 
   - task: SonarQubeAnalyze@4
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 
   - task: Bash@3
     displayName: Run license checker
@@ -45,6 +52,7 @@ steps:
         pandoc lic.csv -f csv -t gfm -s -o /azp/agent/_work/_temp/licensecheck.md
         echo "##vso[task.addattachment type=Distributedtask.Core.Summary;name=License Checker;]/azp/agent/_work/_temp/licensecheck.md"
       failOnStderr: false
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 
   - task: Docker@2
     displayName: Build image
@@ -59,6 +67,7 @@ steps:
   - task: SonarQubePublish@4
     inputs:
       pollingTimeoutSec: "300"
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 
   - task: Bash@3
     displayName: Scan image for vulnerabilities
@@ -67,6 +76,7 @@ steps:
       script: |
         clair-scanner -c http://clair:6060 --ip $LAYER_HOST_IP $(imageName):$(imageTag)
       failOnStderr: false
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 
   - task: ECRPushImage@1
     inputs:
